@@ -88,7 +88,7 @@
     <section class="projects" id="work">
         <div class="container">
             <span class="overline">Selected Projects</span>
-            <h2 class="sec-heading">Four projects, nine AWS services,<br>zero manual deploys<span class="heading-dot">.</span></h2>
+            <h2 class="sec-heading">Five projects, ten AWS services,<br>all defined in code<span class="heading-dot">.</span></h2>
 
             <!-- Project 1 -->
             <article class="project">
@@ -371,6 +371,78 @@
                     </a>
                 </div>
             </article>
+
+            <!-- Project 5 -->
+            <article class="project">
+                <div class="project-header">
+                    <div class="project-num">05</div>
+                    <div class="project-meta">
+                        <h3>Terraform Infrastructure</h3>
+                        <p class="project-type">Infrastructure as Code</p>
+                    </div>
+                    <div class="project-badges">
+                        <span class="badge badge-purple">Terraform</span>
+                        <span class="badge badge-blue">ECS</span>
+                        <span class="badge badge-orange">ECR</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>Took everything I built by hand in the AWS Console and defined it as code. One command creates the entire infrastructure — ECR, ECS Fargate, IAM roles, security groups, CloudWatch logging. One command tears it all down. Version-controlled, reviewable, reproducible.</p>
+                    <div class="arch-box">
+                        <div class="arch-label">How it works</div>
+                        <div class="arch-pipeline">
+                            <div class="arch-step">
+                                <div class="step-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                                </div>
+                                <span>.tf files</span>
+                                <small>Define</small>
+                            </div>
+                            <div class="arch-connector">
+                                <div class="connector-line connector-event"></div>
+                                <div class="connector-arrow"></div>
+                                <span class="connector-label">plan</span>
+                            </div>
+                            <div class="arch-step step-aws">
+                                <div class="step-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5"/><path d="M12 12v9"/><path d="M12 12L4 7.5"/></svg>
+                                </div>
+                                <span>Terraform</span>
+                                <small>Apply</small>
+                            </div>
+                            <div class="arch-connector">
+                                <div class="connector-line"></div>
+                                <div class="connector-arrow"></div>
+                            </div>
+                            <div class="arch-step-split">
+                                <div class="arch-step step-aws mini">
+                                    <div class="step-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                                    </div>
+                                    <span>ECS + ECR</span>
+                                </div>
+                                <div class="arch-step step-aws mini">
+                                    <div class="step-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                    </div>
+                                    <span>IAM + SG</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="learnings">
+                        <div class="learning">Declarative IaC — define what you want, Terraform figures out how to build it</div>
+                        <div class="learning">Plan before apply — always preview changes before they hit production</div>
+                        <div class="learning">State management — Terraform tracks resources and detects drift</div>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/enagbeme/terraform-infra" target="_blank" class="proj-link">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        View source
+                    </a>
+                </div>
+            </article>
         </div>
     </section>
 
@@ -404,13 +476,13 @@
                     <div class="skill-block">
                         <h4>Languages & Tools</h4>
                         <div class="skill-list">
-                            <span>Python</span><span>FastAPI</span><span>JavaScript</span><span>SQL</span><span>PostgreSQL</span><span>Docker</span><span>Git</span><span>GitHub Actions</span><span>Linux</span><span>Bash</span><span>SSH</span><span>systemd</span>
+                            <span>Python</span><span>FastAPI</span><span>JavaScript</span><span>SQL</span><span>PostgreSQL</span><span>Docker</span><span>Terraform</span><span>Git</span><span>GitHub Actions</span><span>Linux</span><span>Bash</span><span>SSH</span><span>systemd</span>
                         </div>
                     </div>
                     <div class="skill-block">
                         <h4>Concepts</h4>
                         <div class="skill-list">
-                            <span>Event-Driven Architecture</span><span>Serverless</span><span>CDN</span><span>CI/CD</span><span>Containerization</span><span>Least Privilege</span><span>VPC Networking</span><span>Static Hosting</span>
+                            <span>Event-Driven Architecture</span><span>Serverless</span><span>CDN</span><span>CI/CD</span><span>Containerization</span><span>Infrastructure as Code</span><span>Least Privilege</span><span>VPC Networking</span><span>Static Hosting</span>
                         </div>
                     </div>
                 </div>
