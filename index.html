@@ -3,428 +3,366 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enoch Enagbem | Cloud Engineer Portfolio</title>
+    <title>Enoch Enagbem | Cloud Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Navigation -->
+
+    <!-- Nav -->
     <nav class="nav">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">EE<span class="logo-dot">.</span></a>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <a href="#contact" class="nav-cta">Get In Touch</a>
+        <a href="#" class="nav-name">Enoch Enagbem</a>
+        <div class="nav-links">
+            <a href="#work">Work</a>
+            <a href="#about">About</a>
+            <a href="#contact" class="nav-contact">Let's Talk</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
-        <div class="hero-bg">
-            <div class="grid-overlay"></div>
-            <div class="glow glow-1"></div>
-            <div class="glow glow-2"></div>
-            <div class="glow glow-3"></div>
-        </div>
-        <div class="hero-content">
-            <div class="hero-badge">CLOUD ENGINEER</div>
-            <h1 class="hero-title">
-                Hi, I'm <span class="gradient-text">Enoch Enagbem</span>
-            </h1>
-            <p class="hero-subtitle">
-                I design and deploy scalable cloud infrastructure on AWS.
-                Master's in Computer Science with hands-on experience in
-                EC2, S3, Lambda, RDS, CloudFront, and Infrastructure as Code.
-            </p>
-            <div class="hero-actions">
-                <a href="#projects" class="btn-primary">
-                    View My Projects
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
-                <a href="https://github.com/enagbeme" target="_blank" class="btn-secondary">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    GitHub
-                </a>
-            </div>
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <span class="hero-stat-number">3</span>
-                    <span class="hero-stat-label">Cloud Projects</span>
+        <div class="hero-inner">
+            <div class="hero-left">
+                <div class="hero-tag">
+                    <span class="pulse"></span>
+                    Open to cloud engineering roles
                 </div>
-                <div class="hero-stat-divider"></div>
-                <div class="hero-stat">
-                    <span class="hero-stat-number">6+</span>
-                    <span class="hero-stat-label">AWS Services</span>
-                </div>
-                <div class="hero-stat-divider"></div>
-                <div class="hero-stat">
-                    <span class="hero-stat-number">M.S.</span>
-                    <span class="hero-stat-label">Computer Science</span>
+                <h1>I build things<br>on <span class="hero-accent">the cloud</span></h1>
+                <p class="hero-desc">
+                    Cloud engineer with an M.S. in Computer Science. I design and deploy
+                    infrastructure on AWS — from serverless pipelines to full-stack
+                    applications running on EC2 and RDS.
+                </p>
+                <div class="hero-links">
+                    <a href="https://github.com/enagbeme" target="_blank" class="hero-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        GitHub
+                    </a>
+                    <a href="mailto:enoch.enagbem@gmail.com" class="hero-link">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        Email
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-label">About Me</div>
-            <div class="about-grid">
-                <div class="about-text">
-                    <h2>Cloud-focused engineer with a passion for building <span class="gradient-text">scalable infrastructure</span></h2>
-                    <p>
-                        I'm a Computer Science graduate (M.S.) transitioning into cloud engineering.
-                        I believe in learning by building real-world projects, not just studying theory.
-                        Every project in my portfolio was designed, built, and deployed on AWS from scratch.
-                    </p>
-                    <p>
-                        I focus on understanding the "why" behind cloud architecture decisions —
-                        when to use serverless vs. servers, how to design event-driven systems,
-                        and how to keep infrastructure secure, scalable, and cost-efficient.
-                    </p>
-                </div>
-                <div class="about-highlights">
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                        </div>
-                        <h4>Hands-On Builder</h4>
-                        <p>Every project is deployed on real AWS infrastructure, not just local demos</p>
+            <div class="hero-right">
+                <div class="terminal">
+                    <div class="terminal-dots">
+                        <span></span><span></span><span></span>
                     </div>
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-                        </div>
-                        <h4>M.S. Computer Science</h4>
-                        <p>Strong CS foundation with focus on distributed systems and software engineering</p>
-                    </div>
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                        </div>
-                        <h4>Full-Stack Capable</h4>
-                        <p>Python, FastAPI, JavaScript, SQL — I can build the apps that run on the cloud</p>
+                    <div class="terminal-body">
+                        <div class="term-line"><span class="term-prompt">$</span> aws ec2 describe-instances</div>
+                        <div class="term-line dim"><span class="term-comment"># 3 projects deployed</span></div>
+                        <div class="term-line"><span class="term-prompt">$</span> aws s3 ls</div>
+                        <div class="term-line out">world-explorer-bucket</div>
+                        <div class="term-line out">image-processor-input</div>
+                        <div class="term-line out">image-processor-output</div>
+                        <div class="term-line"><span class="term-prompt">$</span> aws rds describe-db-instances</div>
+                        <div class="term-line out">job-tracker-db <span class="term-ok">available</span></div>
+                        <div class="term-line"><span class="term-prompt">$</span> <span class="term-cursor">_</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
+    <!-- Services strip -->
+    <section class="services-strip">
+        <div class="strip-inner">
+            <div class="service-pill"><span class="pill-dot pill-orange"></span>EC2</div>
+            <div class="service-pill"><span class="pill-dot pill-blue"></span>S3</div>
+            <div class="service-pill"><span class="pill-dot pill-green"></span>Lambda</div>
+            <div class="service-pill"><span class="pill-dot pill-purple"></span>RDS</div>
+            <div class="service-pill"><span class="pill-dot pill-teal"></span>CloudFront</div>
+            <div class="service-pill"><span class="pill-dot pill-red"></span>SNS</div>
+            <div class="service-pill"><span class="pill-dot pill-amber"></span>IAM</div>
+            <div class="service-pill"><span class="pill-dot pill-blue"></span>VPC</div>
+            <div class="service-pill"><span class="pill-dot pill-green"></span>CloudWatch</div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects" id="work">
         <div class="container">
-            <div class="section-label">Projects</div>
-            <h2 class="section-title">Built on AWS, deployed in production</h2>
-            <p class="section-desc">Each project demonstrates different AWS services and cloud architecture patterns</p>
+            <span class="overline">Selected Projects</span>
+            <h2 class="sec-heading">Three projects, six AWS services,<br>zero managed servers<span class="heading-dot">.</span></h2>
 
             <!-- Project 1 -->
-            <div class="project-card">
-                <div class="project-number">01</div>
-                <div class="project-content">
-                    <div class="project-tags">
-                        <span class="tag tag-orange">S3</span>
-                        <span class="tag tag-blue">CloudFront</span>
-                        <span class="tag tag-green">CDN</span>
+            <article class="project">
+                <div class="project-header">
+                    <div class="project-num">01</div>
+                    <div class="project-meta">
+                        <h3>World Explorer</h3>
+                        <p class="project-type">Static Website Hosting</p>
                     </div>
-                    <h3>World Explorer — Static Website Hosting</h3>
-                    <p class="project-desc">
-                        An interactive travel website hosted entirely on AWS with global CDN distribution.
-                        The site is served from an S3 bucket configured for static website hosting, with
-                        CloudFront providing edge caching across 400+ global locations for sub-100ms load times.
-                    </p>
-                    <div class="architecture">
-                        <div class="arch-title">Architecture</div>
-                        <div class="arch-flow">
-                            <div class="arch-node">
-                                <div class="arch-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                    <div class="project-badges">
+                        <span class="badge badge-orange">S3</span>
+                        <span class="badge badge-blue">CloudFront</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>An interactive travel website hosted on S3 and distributed globally via CloudFront. No servers — just HTML, CSS, and JS served from 400+ edge locations with sub-100ms load times.</p>
+                    <div class="arch-box">
+                        <div class="arch-label">How it works</div>
+                        <div class="arch-pipeline">
+                            <div class="arch-step">
+                                <div class="step-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
                                 </div>
-                                <span>Browser</span>
+                                <span>User Request</span>
                             </div>
-                            <div class="arch-arrow">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            <div class="arch-connector">
+                                <div class="connector-line"></div>
+                                <div class="connector-arrow"></div>
                             </div>
-                            <div class="arch-node node-aws">
-                                <div class="arch-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 110-14h.5"/><path d="M9.5 5A5.5 5.5 0 0120 9.5V10h1a3 3 0 010 6h-1"/></svg>
+                            <div class="arch-step step-aws">
+                                <div class="step-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.5 19H9a7 7 0 110-14h.5"/><path d="M9.5 5A5.5 5.5 0 0120 9.5V10h1a3 3 0 010 6h-1"/></svg>
                                 </div>
-                                <span>CloudFront CDN</span>
+                                <span>CloudFront</span>
+                                <small>Edge cache</small>
                             </div>
-                            <div class="arch-arrow">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            <div class="arch-connector">
+                                <div class="connector-line"></div>
+                                <div class="connector-arrow"></div>
                             </div>
-                            <div class="arch-node node-aws">
-                                <div class="arch-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                            <div class="arch-step step-aws">
+                                <div class="step-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
                                 </div>
                                 <span>S3 Bucket</span>
+                                <small>Origin</small>
                             </div>
                         </div>
                     </div>
-                    <div class="project-learnings">
-                        <div class="learning-title">What I Learned</div>
-                        <ul>
-                            <li>S3 static website hosting vs REST API endpoints</li>
-                            <li>CloudFront origin types — "Other" origin for S3 website endpoints</li>
-                            <li>Cache invalidation and default root objects</li>
-                            <li>Custom error pages (404) with S3 + CloudFront</li>
-                        </ul>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/enagbeme/world-explorer" target="_blank" class="project-link">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            Source Code
-                        </a>
+                    <div class="learnings">
+                        <div class="learning">S3 website endpoints vs REST endpoints — critical for CloudFront origins</div>
+                        <div class="learning">CloudFront cache invalidation and default root object configuration</div>
+                        <div class="learning">Custom 404 error page routing through S3 + CloudFront</div>
                     </div>
                 </div>
-            </div>
+                <div class="project-footer">
+                    <a href="https://github.com/enagbeme/world-explorer" target="_blank" class="proj-link">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        View source
+                    </a>
+                </div>
+            </article>
 
             <!-- Project 2 -->
-            <div class="project-card">
-                <div class="project-number">02</div>
-                <div class="project-content">
-                    <div class="project-tags">
-                        <span class="tag tag-orange">S3</span>
-                        <span class="tag tag-purple">Lambda</span>
-                        <span class="tag tag-red">SNS</span>
-                        <span class="tag tag-blue">CloudWatch</span>
+            <article class="project">
+                <div class="project-header">
+                    <div class="project-num">02</div>
+                    <div class="project-meta">
+                        <h3>Image Processing Pipeline</h3>
+                        <p class="project-type">Event-Driven Serverless</p>
                     </div>
-                    <h3>Image Processing Pipeline — Event-Driven Architecture</h3>
-                    <p class="project-desc">
-                        A fully serverless image processing pipeline that automatically triggers when images
-                        are uploaded to S3. Lambda resizes images to multiple dimensions, stores processed
-                        versions in an output bucket, and sends email notifications via SNS — all without
-                        managing a single server.
-                    </p>
-                    <div class="architecture">
-                        <div class="arch-title">Architecture</div>
-                        <div class="arch-flow">
-                            <div class="arch-node node-aws">
-                                <div class="arch-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                    <div class="project-badges">
+                        <span class="badge badge-orange">S3</span>
+                        <span class="badge badge-purple">Lambda</span>
+                        <span class="badge badge-red">SNS</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>Upload an image to S3 and walk away. Lambda automatically resizes it to three dimensions, saves processed versions to an output bucket, and emails you a notification via SNS. Zero servers, fully event-driven.</p>
+                    <div class="arch-box">
+                        <div class="arch-label">How it works</div>
+                        <div class="arch-pipeline">
+                            <div class="arch-step step-aws">
+                                <div class="step-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
                                 </div>
                                 <span>S3 Upload</span>
+                                <small>Trigger</small>
                             </div>
-                            <div class="arch-arrow">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                                <span class="arch-arrow-label">Event</span>
+                            <div class="arch-connector">
+                                <div class="connector-line connector-event"></div>
+                                <div class="connector-arrow"></div>
+                                <span class="connector-label">event</span>
                             </div>
-                            <div class="arch-node node-aws">
-                                <div class="arch-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            <div class="arch-step step-aws">
+                                <div class="step-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                                 </div>
                                 <span>Lambda</span>
+                                <small>Resize</small>
                             </div>
-                            <div class="arch-arrow">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            <div class="arch-connector">
+                                <div class="connector-line"></div>
+                                <div class="connector-arrow"></div>
                             </div>
-                            <div class="arch-node-group">
-                                <div class="arch-node node-aws small">
-                                    <div class="arch-icon">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                            <div class="arch-step-split">
+                                <div class="arch-step step-aws mini">
+                                    <div class="step-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
                                     </div>
                                     <span>S3 Output</span>
                                 </div>
-                                <div class="arch-node node-aws small">
-                                    <div class="arch-icon">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                <div class="arch-step step-aws mini">
+                                    <div class="step-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                                     </div>
                                     <span>SNS Email</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="project-learnings">
-                        <div class="learning-title">What I Learned</div>
-                        <ul>
-                            <li>Event-driven architecture — S3 triggers invoking Lambda automatically</li>
-                            <li>IAM roles and least-privilege access policies</li>
-                            <li>URL-encoding issues with S3 object keys (unquote_plus)</li>
-                            <li>SNS topic subscriptions and email notifications</li>
-                            <li>CloudWatch logs for debugging serverless functions</li>
-                        </ul>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/enagbeme/lambda-image-processor" target="_blank" class="project-link">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            Source Code
-                        </a>
+                    <div class="learnings">
+                        <div class="learning">Event-driven design — S3 notifications invoke Lambda with zero polling</div>
+                        <div class="learning">IAM least-privilege — Lambda role scoped to only required S3 + SNS actions</div>
+                        <div class="learning">Debugged S3 URL-encoding issue (<code>unquote_plus</code>) using CloudWatch Logs</div>
                     </div>
                 </div>
-            </div>
+                <div class="project-footer">
+                    <a href="https://github.com/enagbeme/lambda-image-processor" target="_blank" class="proj-link">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        View source
+                    </a>
+                </div>
+            </article>
 
             <!-- Project 3 -->
-            <div class="project-card">
-                <div class="project-number">03</div>
-                <div class="project-content">
-                    <div class="project-tags">
-                        <span class="tag tag-blue">EC2</span>
-                        <span class="tag tag-green">RDS</span>
-                        <span class="tag tag-purple">FastAPI</span>
-                        <span class="tag tag-orange">PostgreSQL</span>
+            <article class="project">
+                <div class="project-header">
+                    <div class="project-num">03</div>
+                    <div class="project-meta">
+                        <h3>Job Application Tracker</h3>
+                        <p class="project-type">Full-Stack on EC2 + RDS</p>
                     </div>
-                    <h3>Job Application Tracker — Full-Stack on EC2 + RDS</h3>
-                    <p class="project-desc">
-                        A production full-stack web application for tracking job applications, built with
-                        Python FastAPI and deployed on EC2 with a managed RDS PostgreSQL database. Features
-                        include a dashboard with analytics, kanban board, status tracking, CSV export,
-                        and runs as a systemd service for zero-downtime.
-                    </p>
-                    <div class="architecture">
-                        <div class="arch-title">Architecture</div>
-                        <div class="arch-flow">
-                            <div class="arch-node">
-                                <div class="arch-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                    <div class="project-badges">
+                        <span class="badge badge-blue">EC2</span>
+                        <span class="badge badge-green">RDS</span>
+                        <span class="badge badge-purple">FastAPI</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>A production web app for tracking job applications — dashboard with donut charts, kanban board, table view, CSV export. Built with Python FastAPI, deployed on EC2 with a managed RDS PostgreSQL database and systemd for zero-downtime.</p>
+                    <div class="arch-box">
+                        <div class="arch-label">How it works</div>
+                        <div class="arch-pipeline">
+                            <div class="arch-step">
+                                <div class="step-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
                                 </div>
                                 <span>Browser</span>
+                                <small>Port 8000</small>
                             </div>
-                            <div class="arch-arrow">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            <div class="arch-connector">
+                                <div class="connector-line"></div>
+                                <div class="connector-arrow"></div>
                             </div>
-                            <div class="arch-node node-aws">
-                                <div class="arch-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                            <div class="arch-step step-aws">
+                                <div class="step-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
                                 </div>
-                                <span>EC2 + FastAPI</span>
+                                <span>EC2</span>
+                                <small>FastAPI</small>
                             </div>
-                            <div class="arch-arrow">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            <div class="arch-connector">
+                                <div class="connector-line connector-private"></div>
+                                <div class="connector-arrow"></div>
+                                <span class="connector-label">private</span>
                             </div>
-                            <div class="arch-node node-aws">
-                                <div class="arch-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                            <div class="arch-step step-aws">
+                                <div class="step-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
                                 </div>
-                                <span>RDS PostgreSQL</span>
+                                <span>RDS</span>
+                                <small>PostgreSQL</small>
                             </div>
                         </div>
                     </div>
-                    <div class="project-learnings">
-                        <div class="learning-title">What I Learned</div>
-                        <ul>
-                            <li>EC2 instance setup — SSH access, security groups, key pairs</li>
-                            <li>RDS managed database — PostgreSQL with private VPC connectivity</li>
-                            <li>Security groups as firewalls — controlling traffic between EC2 and RDS</li>
-                            <li>systemd services — running apps permanently with auto-restart</li>
-                            <li>Full deployment pipeline — Git push, SSH, clone, configure, deploy</li>
-                        </ul>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/enagbeme/job-tracker" target="_blank" class="project-link">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            Source Code
-                        </a>
-                        <a href="http://3.16.124.86:8000" target="_blank" class="project-link live-link">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                            Live Demo
-                        </a>
+                    <div class="learnings">
+                        <div class="learning">Security groups as firewalls — RDS only accepts traffic from the EC2 security group</div>
+                        <div class="learning">systemd service for persistent deployment — survives reboots and auto-restarts</div>
+                        <div class="learning">Full deployment pipeline: Git push, SSH, clone, configure environment, start service</div>
                     </div>
                 </div>
-            </div>
+                <div class="project-footer">
+                    <a href="https://github.com/enagbeme/job-tracker" target="_blank" class="proj-link">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        View source
+                    </a>
+                    <a href="http://3.16.124.86:8000" target="_blank" class="proj-link live">
+                        <span class="live-dot"></span>
+                        Live demo
+                    </a>
+                </div>
+            </article>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="skills" id="skills">
+    <!-- About -->
+    <section class="about" id="about">
         <div class="container">
-            <div class="section-label">Skills</div>
-            <h2 class="section-title">Technologies & Services</h2>
-            <div class="skills-grid">
-                <div class="skill-group">
-                    <h4 class="skill-group-title">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 110-14h.5"/><path d="M9.5 5A5.5 5.5 0 0120 9.5V10h1a3 3 0 010 6h-1"/></svg>
-                        AWS Services
-                    </h4>
-                    <div class="skill-tags">
-                        <span>EC2</span>
-                        <span>S3</span>
-                        <span>RDS</span>
-                        <span>Lambda</span>
-                        <span>CloudFront</span>
-                        <span>SNS</span>
-                        <span>IAM</span>
-                        <span>CloudWatch</span>
-                        <span>VPC</span>
-                        <span>Security Groups</span>
-                    </div>
+            <div class="about-layout">
+                <div class="about-left">
+                    <span class="overline">About</span>
+                    <h2 class="sec-heading">I learn by shipping<span class="heading-dot">.</span></h2>
+                    <p>
+                        I have a Master's in Computer Science and I'm transitioning into cloud engineering.
+                        I don't just study for certifications — I build real infrastructure on AWS and deploy
+                        it to production. Every project in this portfolio is live, running on actual AWS services.
+                    </p>
+                    <p>
+                        I care about understanding the "why" — why use Lambda vs EC2, why security groups
+                        matter, why your CloudFront origin type matters. That depth is what I bring.
+                    </p>
                 </div>
-                <div class="skill-group">
-                    <h4 class="skill-group-title">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                        Languages & Frameworks
-                    </h4>
-                    <div class="skill-tags">
-                        <span>Python</span>
-                        <span>JavaScript</span>
-                        <span>FastAPI</span>
-                        <span>SQLAlchemy</span>
-                        <span>HTML/CSS</span>
-                        <span>SQL</span>
-                        <span>Bash</span>
+                <div class="about-right">
+                    <div class="skill-block">
+                        <h4>AWS Services</h4>
+                        <div class="skill-list">
+                            <span>EC2</span><span>S3</span><span>RDS</span><span>Lambda</span><span>CloudFront</span><span>SNS</span><span>IAM</span><span>VPC</span><span>CloudWatch</span><span>Security Groups</span>
+                        </div>
                     </div>
-                </div>
-                <div class="skill-group">
-                    <h4 class="skill-group-title">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-                        DevOps & Tools
-                    </h4>
-                    <div class="skill-tags">
-                        <span>Git / GitHub</span>
-                        <span>Linux (Amazon Linux)</span>
-                        <span>systemd</span>
-                        <span>SSH</span>
-                        <span>PostgreSQL</span>
-                        <span>SQLite</span>
+                    <div class="skill-block">
+                        <h4>Languages & Tools</h4>
+                        <div class="skill-list">
+                            <span>Python</span><span>FastAPI</span><span>JavaScript</span><span>SQL</span><span>PostgreSQL</span><span>Git</span><span>Linux</span><span>Bash</span><span>SSH</span><span>systemd</span>
+                        </div>
                     </div>
-                </div>
-                <div class="skill-group">
-                    <h4 class="skill-group-title">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-                        Cloud Concepts
-                    </h4>
-                    <div class="skill-tags">
-                        <span>Event-Driven Architecture</span>
-                        <span>Serverless</span>
-                        <span>Static Hosting</span>
-                        <span>CDN</span>
-                        <span>Least Privilege</span>
-                        <span>VPC Networking</span>
+                    <div class="skill-block">
+                        <h4>Concepts</h4>
+                        <div class="skill-list">
+                            <span>Event-Driven Architecture</span><span>Serverless</span><span>CDN</span><span>Least Privilege</span><span>VPC Networking</span><span>Static Hosting</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section class="contact" id="contact">
         <div class="container">
-            <div class="contact-card">
-                <div class="section-label">Contact</div>
-                <h2>Let's connect</h2>
-                <p>I'm actively seeking entry-level Cloud Engineer and DevOps roles. Let's talk about how I can contribute to your team.</p>
-                <div class="contact-links">
-                    <a href="mailto:enoch.enagbem@gmail.com" class="contact-item">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        enoch.enagbem@gmail.com
+            <div class="contact-inner">
+                <span class="overline">Contact</span>
+                <h2 class="sec-heading">Let's build something<span class="heading-dot">.</span></h2>
+                <p>I'm looking for entry-level Cloud Engineer and DevOps roles. If you think I'd be a good fit, reach out.</p>
+                <div class="contact-row">
+                    <a href="mailto:enoch.enagbem@gmail.com" class="contact-card">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <div>
+                            <strong>Email</strong>
+                            <span>enoch.enagbem@gmail.com</span>
+                        </div>
                     </a>
-                    <a href="https://github.com/enagbeme" target="_blank" class="contact-item">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        github.com/enagbeme
+                    <a href="https://github.com/enagbeme" target="_blank" class="contact-card">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        <div>
+                            <strong>GitHub</strong>
+                            <span>github.com/enagbeme</span>
+                        </div>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>Built by Enoch Enagbem &copy; 2026</p>
+            <span>Enoch Enagbem &copy; 2026</span>
         </div>
     </footer>
 
