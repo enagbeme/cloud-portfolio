@@ -56,14 +56,14 @@
                         <span></span><span></span><span></span>
                     </div>
                     <div class="terminal-body">
-                        <div class="term-line"><span class="term-prompt">$</span> aws ec2 describe-instances</div>
-                        <div class="term-line dim"><span class="term-comment"># 3 projects deployed</span></div>
                         <div class="term-line"><span class="term-prompt">$</span> aws s3 ls</div>
+                        <div class="term-line out">www.enochenagbem.cloud</div>
                         <div class="term-line out">world-explorer-bucket</div>
                         <div class="term-line out">image-processor-input</div>
-                        <div class="term-line out">image-processor-output</div>
-                        <div class="term-line"><span class="term-prompt">$</span> aws rds describe-db-instances</div>
-                        <div class="term-line out">job-tracker-db <span class="term-ok">available</span></div>
+                        <div class="term-line"><span class="term-prompt">$</span> aws ecs list-clusters</div>
+                        <div class="term-line out">job-tracker-cluster <span class="term-ok">ACTIVE</span></div>
+                        <div class="term-line"><span class="term-prompt">$</span> aws route53 list-hosted-zones</div>
+                        <div class="term-line out">enochenagbem.cloud <span class="term-ok">2 records</span></div>
                         <div class="term-line"><span class="term-prompt">$</span> <span class="term-cursor">_</span></div>
                     </div>
                 </div>
@@ -85,6 +85,7 @@
             <div class="service-pill"><span class="pill-dot pill-green"></span>CloudWatch</div>
             <div class="service-pill"><span class="pill-dot pill-blue"></span>ECS</div>
             <div class="service-pill"><span class="pill-dot pill-orange"></span>ECR</div>
+            <div class="service-pill"><span class="pill-dot pill-teal"></span>Route 53</div>
         </div>
     </section>
 
@@ -92,7 +93,7 @@
     <section class="projects" id="work">
         <div class="container">
             <span class="overline">Selected Projects</span>
-            <h2 class="sec-heading">Five projects, ten AWS services,<br>all defined in code<span class="heading-dot">.</span></h2>
+            <h2 class="sec-heading">Five projects, twelve AWS services,<br>all defined in code<span class="heading-dot">.</span></h2>
 
             <!-- Project 1 -->
             <article class="project">
@@ -523,7 +524,7 @@
                     <div class="skill-block">
                         <h4>AWS Services</h4>
                         <div class="skill-list">
-                            <span>EC2</span><span>S3</span><span>RDS</span><span>Lambda</span><span>CloudFront</span><span>SNS</span><span>IAM</span><span>VPC</span><span>CloudWatch</span><span>ECS Fargate</span><span>ECR</span>
+                            <span>EC2</span><span>S3</span><span>RDS</span><span>Lambda</span><span>CloudFront</span><span>Route 53</span><span>SNS</span><span>IAM</span><span>VPC</span><span>CloudWatch</span><span>ECS Fargate</span><span>ECR</span>
                         </div>
                     </div>
                     <div class="skill-block">
