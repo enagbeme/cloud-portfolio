@@ -300,6 +300,16 @@ code { font-family: var(--font-mono); font-size: 0.82em; background: var(--bg-wa
 .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
 .about-left p { color: var(--ink-2); font-size: 0.92rem; margin-top: 16px; line-height: 1.8; }
 
+.about-photo {
+    margin-bottom: 28px;
+}
+.about-photo img {
+    width: 160px; height: 160px; border-radius: 50%;
+    object-fit: cover; object-position: center top;
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 0 6px rgba(201,163,95,0.1);
+}
+
 .skill-block { margin-bottom: 28px; }
 .skill-block h4 {
     font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600;
