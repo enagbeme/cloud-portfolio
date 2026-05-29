@@ -106,36 +106,48 @@
                 <div class="project-body">
                     <p>An interactive travel website hosted on S3 and distributed globally via CloudFront. No servers — just HTML, CSS, and JS served from 400+ edge locations with sub-100ms load times.</p>
                     <div class="arch-box">
-                        <div class="arch-label">How it works</div>
-                        <div class="arch-pipeline">
-                            <div class="arch-step">
-                                <div class="step-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                        <div class="arch-label">Architecture</div>
+                        <div class="arch-diagram">
+                            <div class="arch-row">
+                                <div class="arch-step">
+                                    <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+                                    <span>User</span>
+                                    <small>Global</small>
                                 </div>
-                                <span>User Request</span>
-                            </div>
-                            <div class="arch-connector">
-                                <div class="connector-line"></div>
-                                <div class="connector-arrow"></div>
-                            </div>
-                            <div class="arch-step step-aws">
-                                <div class="step-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.5 19H9a7 7 0 110-14h.5"/><path d="M9.5 5A5.5 5.5 0 0120 9.5V10h1a3 3 0 010 6h-1"/></svg>
+                                <div class="arch-connector"><div class="connector-line"></div><div class="connector-arrow"></div><span class="connector-label">HTTPS</span></div>
+                                <div class="arch-zone">
+                                    <div class="zone-label">AWS Global Edge Network</div>
+                                    <div class="arch-step step-aws">
+                                        <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.5 19H9a7 7 0 110-14h.5"/><path d="M9.5 5A5.5 5.5 0 0120 9.5V10h1a3 3 0 010 6h-1"/></svg></div>
+                                        <span>CloudFront CDN</span>
+                                        <small>400+ edge locations</small>
+                                    </div>
                                 </div>
-                                <span>CloudFront</span>
-                                <small>Edge cache</small>
-                            </div>
-                            <div class="arch-connector">
-                                <div class="connector-line"></div>
-                                <div class="connector-arrow"></div>
-                            </div>
-                            <div class="arch-step step-aws">
-                                <div class="step-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                                <div class="arch-connector"><div class="connector-line connector-private"></div><div class="connector-arrow"></div><span class="connector-label">cache miss</span></div>
+                                <div class="arch-zone">
+                                    <div class="zone-label">AWS Region (us-east-2)</div>
+                                    <div class="arch-step step-aws">
+                                        <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+                                        <span>S3 Bucket</span>
+                                        <small>Static origin</small>
+                                    </div>
                                 </div>
-                                <span>S3 Bucket</span>
-                                <small>Origin</small>
                             </div>
+                        </div>
+                    </div>
+                    <div class="decisions">
+                        <div class="decisions-label">Why these technologies</div>
+                        <div class="decision">
+                            <strong>S3 over EC2 for hosting</strong>
+                            <p>Static files don't need a running server. S3 costs fractions of a cent per GB, scales automatically, and has 99.999999999% durability. EC2 would mean paying for an idle server 24/7 just to serve HTML.</p>
+                        </div>
+                        <div class="decision">
+                            <strong>CloudFront over serving directly from S3</strong>
+                            <p>S3 alone serves from one region. CloudFront caches content at 400+ edge locations globally, cutting latency from ~200ms to under 50ms. It also provides HTTPS, which S3 website hosting alone doesn't support with custom domains.</p>
+                        </div>
+                        <div class="decision">
+                            <strong>Website endpoint vs REST endpoint</strong>
+                            <p>S3 has two URL formats. The website endpoint supports index.html routing and custom error pages. The REST endpoint doesn't. Using the wrong one as a CloudFront origin breaks page navigation entirely.</p>
                         </div>
                     </div>
                     <div class="learnings">
@@ -169,45 +181,57 @@
                 <div class="project-body">
                     <p>Upload an image to S3 and walk away. Lambda automatically resizes it to three dimensions, saves processed versions to an output bucket, and emails you a notification via SNS. Zero servers, fully event-driven.</p>
                     <div class="arch-box">
-                        <div class="arch-label">How it works</div>
-                        <div class="arch-pipeline">
-                            <div class="arch-step step-aws">
-                                <div class="step-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-                                </div>
-                                <span>S3 Upload</span>
-                                <small>Trigger</small>
-                            </div>
-                            <div class="arch-connector">
-                                <div class="connector-line connector-event"></div>
-                                <div class="connector-arrow"></div>
-                                <span class="connector-label">event</span>
-                            </div>
-                            <div class="arch-step step-aws">
-                                <div class="step-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                                </div>
-                                <span>Lambda</span>
-                                <small>Resize</small>
-                            </div>
-                            <div class="arch-connector">
-                                <div class="connector-line"></div>
-                                <div class="connector-arrow"></div>
-                            </div>
-                            <div class="arch-step-split">
-                                <div class="arch-step step-aws mini">
-                                    <div class="step-icon">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                        <div class="arch-label">Architecture</div>
+                        <div class="arch-diagram">
+                            <div class="arch-row">
+                                <div class="arch-zone">
+                                    <div class="zone-label">Input</div>
+                                    <div class="arch-step step-aws">
+                                        <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+                                        <span>S3 Bucket</span>
+                                        <small>uploads/ prefix</small>
                                     </div>
-                                    <span>S3 Output</span>
                                 </div>
-                                <div class="arch-step step-aws mini">
-                                    <div class="step-icon">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                <div class="arch-connector"><div class="connector-line connector-event"></div><div class="connector-arrow"></div><span class="connector-label">S3 event</span></div>
+                                <div class="arch-zone">
+                                    <div class="zone-label">Compute</div>
+                                    <div class="arch-step step-aws">
+                                        <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                                        <span>Lambda</span>
+                                        <small>256MB / 30s timeout</small>
                                     </div>
-                                    <span>SNS Email</span>
+                                </div>
+                                <div class="arch-connector"><div class="connector-line"></div><div class="connector-arrow"></div></div>
+                                <div class="arch-zone">
+                                    <div class="zone-label">Output</div>
+                                    <div class="arch-step-split">
+                                        <div class="arch-step step-aws mini">
+                                            <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+                                            <span>S3 (3 sizes)</span>
+                                        </div>
+                                        <div class="arch-step step-aws mini">
+                                            <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                                            <span>SNS Email</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="arch-note">IAM role scoped to: s3:GetObject (input), s3:PutObject (output), sns:Publish (notifications)</div>
+                        </div>
+                    </div>
+                    <div class="decisions">
+                        <div class="decisions-label">Why these technologies</div>
+                        <div class="decision">
+                            <strong>Lambda over EC2 for processing</strong>
+                            <p>Image resizing is bursty — you might get 100 uploads in a minute, then nothing for hours. Lambda scales to zero when idle (no cost) and handles 1,000 concurrent executions without configuration. EC2 would sit idle 99% of the time, costing ~$8/month for nothing.</p>
+                        </div>
+                        <div class="decision">
+                            <strong>S3 events over polling</strong>
+                            <p>S3 event notifications trigger Lambda the instant a file lands. The alternative — a cron job polling S3 every minute — adds latency, wastes compute, and misses uploads between polls. Event-driven is the cloud-native pattern.</p>
+                        </div>
+                        <div class="decision">
+                            <strong>SNS over SES for notifications</strong>
+                            <p>SNS is a pub/sub service — one publish fans out to email, SMS, or other services. SES is for transactional email at scale. For simple notifications to myself, SNS is simpler to set up and doesn't require domain verification.</p>
                         </div>
                     </div>
                     <div class="learnings">
@@ -241,38 +265,54 @@
                 <div class="project-body">
                     <p>A production web app for tracking job applications — dashboard with donut charts, kanban board, table view, CSV export. Built with Python FastAPI, deployed on EC2 with a managed RDS PostgreSQL database and systemd for zero-downtime.</p>
                     <div class="arch-box">
-                        <div class="arch-label">How it works</div>
-                        <div class="arch-pipeline">
-                            <div class="arch-step">
-                                <div class="step-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                        <div class="arch-label">Architecture</div>
+                        <div class="arch-diagram">
+                            <div class="arch-row">
+                                <div class="arch-step">
+                                    <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+                                    <span>Browser</span>
+                                    <small>Port 8000</small>
                                 </div>
-                                <span>Browser</span>
-                                <small>Port 8000</small>
-                            </div>
-                            <div class="arch-connector">
-                                <div class="connector-line"></div>
-                                <div class="connector-arrow"></div>
-                            </div>
-                            <div class="arch-step step-aws">
-                                <div class="step-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                                <div class="arch-connector"><div class="connector-line"></div><div class="connector-arrow"></div><span class="connector-label">HTTP</span></div>
+                                <div class="arch-zone">
+                                    <div class="zone-label">Private VPC</div>
+                                    <div class="arch-zone-row">
+                                        <div class="arch-zone-inner">
+                                            <div class="zone-label-sm">Public Subnet</div>
+                                            <div class="arch-step step-aws">
+                                                <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+                                                <span>EC2 (t2.micro)</span>
+                                                <small>FastAPI + Uvicorn</small>
+                                            </div>
+                                        </div>
+                                        <div class="arch-connector"><div class="connector-line connector-private"></div><div class="connector-arrow"></div><span class="connector-label">port 5432</span></div>
+                                        <div class="arch-zone-inner">
+                                            <div class="zone-label-sm">Private Subnet</div>
+                                            <div class="arch-step step-aws">
+                                                <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+                                                <span>RDS PostgreSQL</span>
+                                                <small>No public access</small>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <span>EC2</span>
-                                <small>FastAPI</small>
                             </div>
-                            <div class="arch-connector">
-                                <div class="connector-line connector-private"></div>
-                                <div class="connector-arrow"></div>
-                                <span class="connector-label">private</span>
-                            </div>
-                            <div class="arch-step step-aws">
-                                <div class="step-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-                                </div>
-                                <span>RDS</span>
-                                <small>PostgreSQL</small>
-                            </div>
+                            <div class="arch-note">Security groups: EC2 allows port 8000 (public) + SSH (my IP). RDS allows port 5432 from EC2 SG only.</div>
+                        </div>
+                    </div>
+                    <div class="decisions">
+                        <div class="decisions-label">Why these technologies</div>
+                        <div class="decision">
+                            <strong>EC2 over Lambda for the app server</strong>
+                            <p>This is a stateful web app with server-rendered templates, WebSocket-like interactions, and persistent database connections. Lambda has a 15-minute timeout and cold starts that would break the user experience. EC2 gives full control over the runtime.</p>
+                        </div>
+                        <div class="decision">
+                            <strong>RDS over self-managed PostgreSQL on EC2</strong>
+                            <p>Running PostgreSQL on EC2 means managing backups, patches, failover, and monitoring yourself. RDS handles all of that automatically. The tradeoff is cost (~$15/month vs ~$0 on EC2), but the operational burden of self-managing a database isn't worth it.</p>
+                        </div>
+                        <div class="decision">
+                            <strong>Private RDS with security group isolation</strong>
+                            <p>RDS has no public IP. Only the EC2 security group can reach port 5432. Even if someone gets the database credentials, they can't connect from outside the VPC. This is defense in depth — multiple security layers.</p>
                         </div>
                     </div>
                     <div class="learnings">
@@ -310,48 +350,55 @@
                 <div class="project-body">
                     <p>Took the Job Tracker from manual EC2 deployment to a fully automated container pipeline. Docker image builds on every push, gets stored in ECR, and deploys to ECS Fargate — zero SSH, zero downtime, zero servers to manage.</p>
                     <div class="arch-box">
-                        <div class="arch-label">How it works</div>
-                        <div class="arch-pipeline">
-                            <div class="arch-step">
-                                <div class="step-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 22v-4a4.8 4.8 0 00-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 004 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                        <div class="arch-label">Architecture</div>
+                        <div class="arch-diagram">
+                            <div class="arch-row">
+                                <div class="arch-step">
+                                    <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 22v-4a4.8 4.8 0 00-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 004 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></div>
+                                    <span>git push</span>
+                                    <small>Developer</small>
                                 </div>
-                                <span>Git Push</span>
-                            </div>
-                            <div class="arch-connector">
-                                <div class="connector-line connector-event"></div>
-                                <div class="connector-arrow"></div>
-                                <span class="connector-label">trigger</span>
-                            </div>
-                            <div class="arch-step step-aws">
-                                <div class="step-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5"/><path d="M12 12v9"/><path d="M12 12L4 7.5"/></svg>
+                                <div class="arch-connector"><div class="connector-line connector-event"></div><div class="connector-arrow"></div><span class="connector-label">webhook</span></div>
+                                <div class="arch-zone">
+                                    <div class="zone-label">CI/CD Pipeline</div>
+                                    <div class="arch-step step-aws">
+                                        <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5"/><path d="M12 12v9"/><path d="M12 12L4 7.5"/></svg></div>
+                                        <span>GitHub Actions</span>
+                                        <small>Build + test + push</small>
+                                    </div>
                                 </div>
-                                <span>GitHub Actions</span>
-                                <small>Build & Push</small>
-                            </div>
-                            <div class="arch-connector">
-                                <div class="connector-line"></div>
-                                <div class="connector-arrow"></div>
-                            </div>
-                            <div class="arch-step step-aws">
-                                <div class="step-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                                <div class="arch-connector"><div class="connector-line"></div><div class="connector-arrow"></div><span class="connector-label">image</span></div>
+                                <div class="arch-zone">
+                                    <div class="zone-label">AWS</div>
+                                    <div class="arch-zone-row">
+                                        <div class="arch-step step-aws mini">
+                                            <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+                                            <span>ECR</span>
+                                        </div>
+                                        <div class="arch-connector-sm">&#8594;</div>
+                                        <div class="arch-step step-aws mini">
+                                            <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+                                            <span>ECS Fargate</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <span>ECR</span>
-                                <small>Registry</small>
                             </div>
-                            <div class="arch-connector">
-                                <div class="connector-line"></div>
-                                <div class="connector-arrow"></div>
-                            </div>
-                            <div class="arch-step step-aws">
-                                <div class="step-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-                                </div>
-                                <span>ECS Fargate</span>
-                                <small>Deploy</small>
-                            </div>
+                            <div class="arch-note">Each commit SHA is used as the image tag for full traceability. Rollback = redeploy a previous tag.</div>
+                        </div>
+                    </div>
+                    <div class="decisions">
+                        <div class="decisions-label">Why these technologies</div>
+                        <div class="decision">
+                            <strong>ECS Fargate over EC2 for containers</strong>
+                            <p>EC2 means patching the OS, monitoring disk space, managing Docker daemon, and scaling manually. Fargate removes all of that — you define CPU/memory and AWS handles the rest. The tradeoff is less control over the host, but for a web app that's a good trade.</p>
+                        </div>
+                        <div class="decision">
+                            <strong>ECR over Docker Hub</strong>
+                            <p>ECR is private by default and in the same AWS network as ECS, so image pulls are fast and free. Docker Hub has rate limits on free accounts (100 pulls/6 hours) which can break CI/CD pipelines.</p>
+                        </div>
+                        <div class="decision">
+                            <strong>GitHub Actions over Jenkins or CodePipeline</strong>
+                            <p>GitHub Actions lives where the code lives — no separate CI server to manage. AWS CodePipeline would add another AWS service to maintain. Jenkins would need its own EC2 instance. GitHub Actions is free for public repos and has official AWS actions.</p>
                         </div>
                     </div>
                     <div class="learnings">
@@ -389,45 +436,44 @@
                 <div class="project-body">
                     <p>Took everything I built by hand in the AWS Console and defined it as code. One command creates the entire infrastructure — ECR, ECS Fargate, IAM roles, security groups, CloudWatch logging. One command tears it all down. Version-controlled, reviewable, reproducible.</p>
                     <div class="arch-box">
-                        <div class="arch-label">How it works</div>
-                        <div class="arch-pipeline">
-                            <div class="arch-step">
-                                <div class="step-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <div class="arch-label">Architecture</div>
+                        <div class="arch-diagram">
+                            <div class="arch-row">
+                                <div class="arch-step">
+                                    <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+                                    <span>.tf files</span>
+                                    <small>8 files, 7 resources</small>
                                 </div>
-                                <span>.tf files</span>
-                                <small>Define</small>
-                            </div>
-                            <div class="arch-connector">
-                                <div class="connector-line connector-event"></div>
-                                <div class="connector-arrow"></div>
-                                <span class="connector-label">plan</span>
-                            </div>
-                            <div class="arch-step step-aws">
-                                <div class="step-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5"/><path d="M12 12v9"/><path d="M12 12L4 7.5"/></svg>
-                                </div>
-                                <span>Terraform</span>
-                                <small>Apply</small>
-                            </div>
-                            <div class="arch-connector">
-                                <div class="connector-line"></div>
-                                <div class="connector-arrow"></div>
-                            </div>
-                            <div class="arch-step-split">
-                                <div class="arch-step step-aws mini">
-                                    <div class="step-icon">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                                <div class="arch-connector"><div class="connector-line connector-event"></div><div class="connector-arrow"></div><span class="connector-label">plan &rarr; apply</span></div>
+                                <div class="arch-zone">
+                                    <div class="zone-label">Terraform creates on AWS</div>
+                                    <div class="arch-resource-grid">
+                                        <div class="resource-item"><span class="resource-dot resource-blue"></span>ECS Cluster</div>
+                                        <div class="resource-item"><span class="resource-dot resource-blue"></span>ECS Service</div>
+                                        <div class="resource-item"><span class="resource-dot resource-blue"></span>Task Definition</div>
+                                        <div class="resource-item"><span class="resource-dot resource-orange"></span>ECR Repository</div>
+                                        <div class="resource-item"><span class="resource-dot resource-green"></span>IAM Role + Policy</div>
+                                        <div class="resource-item"><span class="resource-dot resource-purple"></span>Security Group</div>
+                                        <div class="resource-item"><span class="resource-dot resource-red"></span>CloudWatch Logs</div>
                                     </div>
-                                    <span>ECS + ECR</span>
-                                </div>
-                                <div class="arch-step step-aws mini">
-                                    <div class="step-icon">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                                    </div>
-                                    <span>IAM + SG</span>
                                 </div>
                             </div>
+                            <div class="arch-note">State file tracks every resource. <code>terraform destroy</code> removes all 7 in the correct dependency order.</div>
+                        </div>
+                    </div>
+                    <div class="decisions">
+                        <div class="decisions-label">Why these technologies</div>
+                        <div class="decision">
+                            <strong>Terraform over CloudFormation</strong>
+                            <p>CloudFormation is AWS-only. Terraform works with AWS, GCP, Azure, and 3,000+ providers. If I ever work with multi-cloud or non-AWS services, the same tool and language apply. The tradeoff is that CloudFormation has tighter AWS integration and catches some errors earlier.</p>
+                        </div>
+                        <div class="decision">
+                            <strong>IaC over console clicking</strong>
+                            <p>The console is fine for learning, but infrastructure built by hand is undocumented, unreproducible, and unauditable. With Terraform, the code IS the documentation. Changes go through pull requests. If a region goes down, <code>terraform apply</code> rebuilds everything elsewhere in minutes.</p>
+                        </div>
+                        <div class="decision">
+                            <strong>Separate repo over embedding in the app repo</strong>
+                            <p>Infrastructure and application code have different lifecycles. App code changes daily; infrastructure changes rarely. Separate repos mean separate CI/CD pipelines, separate permissions, and clearer ownership. The tradeoff is managing two repos instead of one.</p>
                         </div>
                     </div>
                     <div class="learnings">
