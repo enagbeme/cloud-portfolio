@@ -88,6 +88,7 @@
             <div class="service-pill"><span class="pill-dot pill-teal"></span>Route 53</div>
             <div class="service-pill"><span class="pill-dot pill-green"></span>Nginx</div>
             <div class="service-pill"><span class="pill-dot pill-amber"></span>Let's Encrypt</div>
+            <div class="service-pill"><span class="pill-dot pill-blue"></span>ALB</div>
         </div>
     </section>
 
@@ -95,7 +96,7 @@
     <section class="projects" id="work">
         <div class="container">
             <span class="overline">Selected Projects</span>
-            <h2 class="sec-heading">Seven projects, fourteen AWS services,<br>all defined in code<span class="heading-dot">.</span></h2>
+            <h2 class="sec-heading">Eight projects, fifteen AWS services,<br>all defined in code<span class="heading-dot">.</span></h2>
 
             <!-- Project 1 -->
             <article class="project">
@@ -671,6 +672,100 @@
                     </a>
                 </div>
             </article>
+
+            <!-- Project 8 -->
+            <article class="project">
+                <div class="project-header">
+                    <div class="project-num">08</div>
+                    <div class="project-meta">
+                        <h3>Snip — URL Shortener</h3>
+                        <p class="project-type">Full-Stack Production App on AWS</p>
+                    </div>
+                    <div class="project-badges">
+                        <span class="badge badge-blue">ECS</span>
+                        <span class="badge badge-green">RDS</span>
+                        <span class="badge badge-purple">Terraform</span>
+                        <span class="badge badge-orange">ALB</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>A production URL shortener with click analytics. Paste a long URL, get a short trackable link. Every click is logged — timestamp, IP, referrer — and displayed on an analytics dashboard. Built with Java Spring Boot, deployed on ECS Fargate behind an Application Load Balancer with HTTPS. Entire infrastructure — 34 AWS resources — defined in Terraform.</p>
+                    <div class="arch-box">
+                        <div class="arch-label">Architecture</div>
+                        <div class="arch-diagram">
+                            <div class="arch-row">
+                                <div class="arch-step">
+                                    <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+                                    <span>User</span>
+                                    <small>HTTPS</small>
+                                </div>
+                                <div class="arch-connector"><div class="connector-line"></div><div class="connector-arrow"></div></div>
+                                <div class="arch-zone">
+                                    <div class="zone-label">AWS VPC (us-east-2)</div>
+                                    <div class="arch-zone-row">
+                                        <div class="arch-zone-inner">
+                                            <div class="zone-label-sm">Public Subnet</div>
+                                            <div class="arch-zone-row">
+                                                <div class="arch-step step-aws mini">
+                                                    <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg></div>
+                                                    <span>ALB</span>
+                                                    <small>HTTPS:443</small>
+                                                </div>
+                                                <div class="arch-connector-sm">→</div>
+                                                <div class="arch-step step-aws mini">
+                                                    <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+                                                    <span>ECS Fargate</span>
+                                                    <small>Spring Boot</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="arch-connector"><div class="connector-line connector-private"></div><div class="connector-arrow"></div><span class="connector-label">port 5432</span></div>
+                                        <div class="arch-zone-inner">
+                                            <div class="zone-label-sm">Private Subnet</div>
+                                            <div class="arch-step step-aws mini">
+                                                <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+                                                <span>RDS PostgreSQL</span>
+                                                <small>No public access</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="arch-note">34 AWS resources defined in Terraform. GitHub Actions builds + deploys on every push to main. Route 53 → ALB → ECS → RDS chain with security group isolation at every layer.</div>
+                        </div>
+                    </div>
+                    <div class="decisions">
+                        <div class="decisions-label">Why these technologies</div>
+                        <div class="decision">
+                            <strong>Application Load Balancer over exposing ECS directly</strong>
+                            <p>ECS Fargate tasks get public IPs but no SSL support. The ALB terminates HTTPS, runs health checks, and allows scaling to multiple containers without changing DNS. Without it, there's no HTTPS, no health monitoring, and no zero-downtime deployments.</p>
+                        </div>
+                        <div class="decision">
+                            <strong>Java Spring Boot over Python FastAPI</strong>
+                            <p>Most enterprise cloud and backend roles use Java. Spring Boot has built-in dependency injection, JPA for database access, and Thymeleaf for server-side rendering — a complete production framework. The tradeoff is a heavier JAR and longer build times vs FastAPI's simplicity.</p>
+                        </div>
+                        <div class="decision">
+                            <strong>RDS in a private subnet over a public database</strong>
+                            <p>The database has no public IP. Only the ECS security group can reach port 5432. Even with valid credentials, external connections are blocked at the network level. Defense in depth — security groups + private subnet + VPC isolation.</p>
+                        </div>
+                    </div>
+                    <div class="learnings">
+                        <div class="learning">VPC design with public/private subnets — ALB in public, RDS in private, security group chaining</div>
+                        <div class="learning">ALB health checks and HTTPS termination — SSL at the load balancer, plain HTTP internally</div>
+                        <div class="learning">Spring Data JPA entity lifecycle — managed vs detached entities and transaction boundaries</div>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/enagbeme/url-shortener" target="_blank" class="proj-link">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        View source
+                    </a>
+                    <a href="https://link.enochenagbem.cloud" target="_blank" class="proj-link live">
+                        <span class="live-dot"></span>
+                        Live demo
+                    </a>
+                </div>
+            </article>
         </div>
     </section>
 
@@ -702,7 +797,7 @@
                     <div class="skill-block">
                         <h4>AWS Services</h4>
                         <div class="skill-list">
-                            <span>EC2</span><span>S3</span><span>RDS</span><span>Lambda</span><span>CloudFront</span><span>Route 53</span><span>SNS</span><span>IAM</span><span>VPC</span><span>CloudWatch</span><span>ECS Fargate</span><span>ECR</span>
+                            <span>EC2</span><span>S3</span><span>RDS</span><span>Lambda</span><span>CloudFront</span><span>Route 53</span><span>ALB</span><span>SNS</span><span>IAM</span><span>VPC</span><span>CloudWatch</span><span>ECS Fargate</span><span>ECR</span>
                         </div>
                     </div>
                     <div class="skill-block">
