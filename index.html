@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enoch Enagbem | Cloud Engineer</title>
+    <title>Enoch Kumanyenu | Healthcare IT &middot; Cloud Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -12,9 +12,10 @@
 
     <!-- Nav -->
     <nav class="nav">
-        <a href="#" class="nav-name">Enoch Enagbem</a>
+        <a href="#" class="nav-name">Enoch Kumanyenu</a>
         <div class="nav-links">
-            <a href="#work">Work</a>
+            <a href="#work">Healthcare</a>
+            <a href="#cloud">Cloud</a>
             <a href="#about">About</a>
             <a href="#contact" class="nav-contact">Let's Talk</a>
         </div>
@@ -27,13 +28,13 @@
             <div class="hero-left">
                 <div class="hero-tag">
                     <span class="pulse"></span>
-                    Open to cloud engineering roles
+                    Open to healthcare IT &amp; Epic analyst roles
                 </div>
-                <h1>I build things<br>on <span class="hero-accent">the cloud</span></h1>
+                <h1>Healthcare IT professional.<br>Software that <span class="hero-accent">supports care.</span></h1>
                 <p class="hero-desc">
-                    Cloud engineer with production experience building financial
-                    transaction systems. I design and deploy infrastructure on AWS —
-                    from serverless pipelines to containerized applications on ECS Fargate.
+                    Master&rsquo;s in Computer Science. Spring Boot, Epic FHIR,
+                    EHR analytics, and the production cloud infrastructure to deploy
+                    it safely.
                 </p>
                 <div class="hero-links">
                     <a href="https://github.com/enagbeme" target="_blank" class="hero-link">
@@ -51,20 +52,30 @@
                 </div>
             </div>
             <div class="hero-right">
-                <div class="terminal">
-                    <div class="terminal-dots">
-                        <span></span><span></span><span></span>
+                <div class="current-card">
+                    <div class="current-header">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        <span>Currently</span>
                     </div>
-                    <div class="terminal-body">
-                        <div class="term-line"><span class="term-prompt">$</span> aws s3 ls</div>
-                        <div class="term-line out">www.enochenagbem.cloud</div>
-                        <div class="term-line out">world-explorer-bucket</div>
-                        <div class="term-line out">image-processor-input</div>
-                        <div class="term-line"><span class="term-prompt">$</span> aws ecs list-clusters</div>
-                        <div class="term-line out">job-tracker-cluster <span class="term-ok">ACTIVE</span></div>
-                        <div class="term-line"><span class="term-prompt">$</span> aws route53 list-hosted-zones</div>
-                        <div class="term-line out">enochenagbem.cloud <span class="term-ok">2 records</span></div>
-                        <div class="term-line"><span class="term-prompt">$</span> <span class="term-cursor">_</span></div>
+                    <div class="current-row">
+                        <div class="current-label">Active application</div>
+                        <div class="current-value">Epic Project Manager</div>
+                        <div class="current-meta"><span class="status-dot"></span>Under review</div>
+                    </div>
+                    <div class="current-row">
+                        <div class="current-label">Shipped this week</div>
+                        <div class="current-value">Caelis Health, Clinical Analytics</div>
+                        <div class="current-meta"><a href="https://caelis.enochenagbem.cloud" target="_blank">caelis.enochenagbem.cloud &rarr;</a></div>
+                    </div>
+                    <div class="current-row">
+                        <div class="current-label">Learning</div>
+                        <div class="current-value">HL7 FHIR R4, SMART on FHIR</div>
+                        <div class="current-meta">via Epic developer sandbox</div>
+                    </div>
+                    <div class="current-row last">
+                        <div class="current-label">Based in</div>
+                        <div class="current-value">Richmond, VA</div>
+                        <div class="current-meta">Open to relocation</div>
                     </div>
                 </div>
             </div>
@@ -74,6 +85,12 @@
     <!-- Services strip -->
     <section class="services-strip">
         <div class="strip-inner">
+            <div class="service-pill"><span class="pill-dot pill-red"></span>Epic FHIR</div>
+            <div class="service-pill"><span class="pill-dot pill-teal"></span>HL7 FHIR R4</div>
+            <div class="service-pill"><span class="pill-dot pill-green"></span>SMART on FHIR</div>
+            <div class="service-pill"><span class="pill-dot pill-amber"></span>HIPAA</div>
+            <div class="service-pill"><span class="pill-dot pill-blue"></span>Spring Boot</div>
+            <div class="service-pill"><span class="pill-dot pill-purple"></span>Java 17</div>
             <div class="service-pill"><span class="pill-dot pill-orange"></span>EC2</div>
             <div class="service-pill"><span class="pill-dot pill-blue"></span>S3</div>
             <div class="service-pill"><span class="pill-dot pill-green"></span>Lambda</div>
@@ -92,259 +109,150 @@
         </div>
     </section>
 
-    <!-- Projects -->
+    <!-- Healthcare IT Projects -->
     <section class="projects" id="work">
         <div class="container">
-            <span class="overline">Selected Projects</span>
-            <h2 class="sec-heading">Eight projects, fifteen AWS services,<br>all defined in code<span class="heading-dot">.</span></h2>
+            <span class="overline">Healthcare IT</span>
+            <h2 class="sec-heading">Clinical software, built to learn<br>the Epic ecosystem from the inside<span class="heading-dot">.</span></h2>
 
-            <!-- Project 1 -->
+            <!-- Project H1 — Caelis Health -->
             <article class="project">
                 <div class="project-header">
                     <div class="project-num">01</div>
                     <div class="project-meta">
-                        <h3>World Explorer</h3>
-                        <p class="project-type">Static Website Hosting</p>
+                        <h3>Caelis Health</h3>
+                        <p class="project-type">Clinical Analytics Platform</p>
                     </div>
                     <div class="project-badges">
-                        <span class="badge badge-orange">S3</span>
-                        <span class="badge badge-blue">CloudFront</span>
+                        <span class="badge badge-red">Spring Boot</span>
+                        <span class="badge badge-blue">JPA</span>
+                        <span class="badge badge-purple">Chart.js</span>
+                        <span class="badge badge-green">Docker</span>
                     </div>
                 </div>
                 <div class="project-body">
-                    <p>An interactive travel website hosted on S3 and distributed globally via CloudFront. No servers — just HTML, CSS, and JS served from 400+ edge locations with sub-100ms load times.</p>
+                    <p>A multi-page clinical analytics dashboard simulating EHR operational metrics: 500 patients, 12 providers, 2,000 visits across 6 departments. Tracks wait times, no-show rates, top diagnoses, top medications, and department-level visit volume — the kind of data hospital operations leaders actually look at every day.</p>
                     <div class="arch-box">
-                        <div class="arch-label">Architecture</div>
+                        <div class="arch-label">Pages</div>
                         <div class="arch-diagram">
                             <div class="arch-row">
-                                <div class="arch-step">
-                                    <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
-                                    <span>User</span>
-                                    <small>Global</small>
-                                </div>
-                                <div class="arch-connector"><div class="connector-line"></div><div class="connector-arrow"></div><span class="connector-label">HTTPS</span></div>
-                                <div class="arch-zone">
-                                    <div class="zone-label">AWS Global Edge Network</div>
-                                    <div class="arch-step step-aws">
-                                        <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.5 19H9a7 7 0 110-14h.5"/><path d="M9.5 5A5.5 5.5 0 0120 9.5V10h1a3 3 0 010 6h-1"/></svg></div>
-                                        <span>CloudFront CDN</span>
-                                        <small>400+ edge locations</small>
-                                    </div>
-                                </div>
-                                <div class="arch-connector"><div class="connector-line connector-private"></div><div class="connector-arrow"></div><span class="connector-label">cache miss</span></div>
-                                <div class="arch-zone">
-                                    <div class="zone-label">AWS Region (us-east-2)</div>
-                                    <div class="arch-step step-aws">
-                                        <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
-                                        <span>S3 Bucket</span>
-                                        <small>Static origin</small>
-                                    </div>
-                                </div>
+                                <div class="arch-step"><span>Overview</span><small>5 KPIs &middot; 7 charts</small></div>
+                                <div class="arch-connector-sm">·</div>
+                                <div class="arch-step"><span>Patients</span><small>500 records &middot; search</small></div>
+                                <div class="arch-connector-sm">·</div>
+                                <div class="arch-step"><span>Visits</span><small>2,000 records &middot; wait time</small></div>
+                                <div class="arch-connector-sm">·</div>
+                                <div class="arch-step"><span>Clinical</span><small>diagnoses &middot; meds</small></div>
                             </div>
+                            <div class="arch-note">Java 17 &middot; Spring Boot &middot; Spring Data JPA with JOIN FETCH for eager loading &middot; Thymeleaf fragment-based layouts &middot; Chart.js for interactive visualizations &middot; H2 in PostgreSQL mode &middot; deployed via Docker + Coolify on a Contabo VPS with Traefik + Let's Encrypt.</div>
                         </div>
                     </div>
                     <div class="decisions">
-                        <div class="decisions-label">Why these technologies</div>
+                        <div class="decisions-label">Why these choices</div>
                         <div class="decision">
-                            <strong>S3 over EC2 for hosting</strong>
-                            <p>Static files don't need a running server. S3 costs fractions of a cent per GB, scales automatically, and has 99.999999999% durability. EC2 would mean paying for an idle server 24/7 just to serve HTML.</p>
+                            <strong>Multi-page Spring MVC over single-page React</strong>
+                            <p>Real EHR analyst tools are server-rendered for performance and accessibility. Thymeleaf + Spring keeps the codebase tight and renders the dashboard in under 100ms even with thousands of rows — no client-side hydration cost.</p>
                         </div>
                         <div class="decision">
-                            <strong>CloudFront over serving directly from S3</strong>
-                            <p>S3 alone serves from one region. CloudFront caches content at 400+ edge locations globally, cutting latency from ~200ms to under 50ms. It also provides HTTPS, which S3 website hosting alone doesn't support with custom domains.</p>
+                            <strong>Native SQL aggregations over in-memory filtering</strong>
+                            <p>Wait time, no-show rate, and visits-per-day are calculated with native GROUP BY queries against H2 (in PostgreSQL mode). The same SQL would run unchanged against a real Postgres or Oracle EHR data warehouse — which is what hospitals actually use.</p>
                         </div>
                         <div class="decision">
-                            <strong>Website endpoint vs REST endpoint</strong>
-                            <p>S3 has two URL formats. The website endpoint supports index.html routing and custom error pages. The REST endpoint doesn't. Using the wrong one as a CloudFront origin breaks page navigation entirely.</p>
+                            <strong>JOIN FETCH over lazy loading</strong>
+                            <p>With <code>open-in-view: false</code>, lazy associations would throw exceptions during Thymeleaf rendering. Custom <code>findAllWithRefs</code> queries eagerly fetch Patient + Provider in one round-trip, eliminating N+1 queries on the visit log.</p>
                         </div>
                     </div>
                     <div class="learnings">
-                        <div class="learning">S3 website endpoints vs REST endpoints — critical for CloudFront origins</div>
-                        <div class="learning">CloudFront cache invalidation and default root object configuration</div>
-                        <div class="learning">Custom 404 error page routing through S3 + CloudFront</div>
+                        <div class="learning">Operational EHR metrics: wait time (arrival → seen), no-show rates by department, visit volume distribution</div>
+                        <div class="learning">Spring Data JPA lifecycle — <code>open-in-view: false</code>, JOIN FETCH for eager loading, transaction boundaries</div>
+                        <div class="learning">Production deploy without AWS: Docker multi-stage build, Coolify orchestration, Traefik reverse proxy, automatic SSL</div>
                     </div>
                 </div>
                 <div class="project-footer">
-                    <a href="https://github.com/enagbeme/world-explorer" target="_blank" class="proj-link">
+                    <a href="https://github.com/enagbeme/caelis-health" target="_blank" class="proj-link">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                         View source
                     </a>
-                </div>
-            </article>
-
-            <!-- Project 2 -->
-            <article class="project">
-                <div class="project-header">
-                    <div class="project-num">02</div>
-                    <div class="project-meta">
-                        <h3>Image Processing Pipeline</h3>
-                        <p class="project-type">Event-Driven Serverless</p>
-                    </div>
-                    <div class="project-badges">
-                        <span class="badge badge-orange">S3</span>
-                        <span class="badge badge-purple">Lambda</span>
-                        <span class="badge badge-red">SNS</span>
-                    </div>
-                </div>
-                <div class="project-body">
-                    <p>Upload an image to S3 and walk away. Lambda automatically resizes it to three dimensions, saves processed versions to an output bucket, and emails you a notification via SNS. Zero servers, fully event-driven.</p>
-                    <div class="arch-box">
-                        <div class="arch-label">Architecture</div>
-                        <div class="arch-diagram">
-                            <div class="arch-row">
-                                <div class="arch-zone">
-                                    <div class="zone-label">Input</div>
-                                    <div class="arch-step step-aws">
-                                        <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
-                                        <span>S3 Bucket</span>
-                                        <small>uploads/ prefix</small>
-                                    </div>
-                                </div>
-                                <div class="arch-connector"><div class="connector-line connector-event"></div><div class="connector-arrow"></div><span class="connector-label">S3 event</span></div>
-                                <div class="arch-zone">
-                                    <div class="zone-label">Compute</div>
-                                    <div class="arch-step step-aws">
-                                        <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-                                        <span>Lambda</span>
-                                        <small>256MB / 30s timeout</small>
-                                    </div>
-                                </div>
-                                <div class="arch-connector"><div class="connector-line"></div><div class="connector-arrow"></div></div>
-                                <div class="arch-zone">
-                                    <div class="zone-label">Output</div>
-                                    <div class="arch-step-split">
-                                        <div class="arch-step step-aws mini">
-                                            <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
-                                            <span>S3 (3 sizes)</span>
-                                        </div>
-                                        <div class="arch-step step-aws mini">
-                                            <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-                                            <span>SNS Email</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="arch-note">IAM role scoped to: s3:GetObject (input), s3:PutObject (output), sns:Publish (notifications)</div>
-                        </div>
-                    </div>
-                    <div class="decisions">
-                        <div class="decisions-label">Why these technologies</div>
-                        <div class="decision">
-                            <strong>Lambda over EC2 for processing</strong>
-                            <p>Image resizing is bursty — you might get 100 uploads in a minute, then nothing for hours. Lambda scales to zero when idle (no cost) and handles 1,000 concurrent executions without configuration. EC2 would sit idle 99% of the time, costing ~$8/month for nothing.</p>
-                        </div>
-                        <div class="decision">
-                            <strong>S3 events over polling</strong>
-                            <p>S3 event notifications trigger Lambda the instant a file lands. The alternative — a cron job polling S3 every minute — adds latency, wastes compute, and misses uploads between polls. Event-driven is the cloud-native pattern.</p>
-                        </div>
-                        <div class="decision">
-                            <strong>SNS over SES for notifications</strong>
-                            <p>SNS is a pub/sub service — one publish fans out to email, SMS, or other services. SES is for transactional email at scale. For simple notifications to myself, SNS is simpler to set up and doesn't require domain verification.</p>
-                        </div>
-                    </div>
-                    <div class="learnings">
-                        <div class="learning">Event-driven design — S3 notifications invoke Lambda with zero polling</div>
-                        <div class="learning">IAM least-privilege — Lambda role scoped to only required S3 + SNS actions</div>
-                        <div class="learning">Debugged S3 URL-encoding issue (<code>unquote_plus</code>) using CloudWatch Logs</div>
-                    </div>
-                </div>
-                <div class="project-footer">
-                    <a href="https://github.com/enagbeme/lambda-image-processor" target="_blank" class="proj-link">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        View source
-                    </a>
-                </div>
-            </article>
-
-            <!-- Project 3 -->
-            <article class="project">
-                <div class="project-header">
-                    <div class="project-num">03</div>
-                    <div class="project-meta">
-                        <h3>Job Application Tracker</h3>
-                        <p class="project-type">Full-Stack on EC2 + RDS</p>
-                    </div>
-                    <div class="project-badges">
-                        <span class="badge badge-blue">EC2</span>
-                        <span class="badge badge-green">RDS</span>
-                        <span class="badge badge-purple">FastAPI</span>
-                    </div>
-                </div>
-                <div class="project-body">
-                    <p>A production web app for tracking job applications — dashboard with donut charts, kanban board, table view, CSV export. Built with Python FastAPI, deployed on EC2 with a managed RDS PostgreSQL database and systemd for zero-downtime.</p>
-                    <div class="arch-box">
-                        <div class="arch-label">Architecture</div>
-                        <div class="arch-diagram">
-                            <div class="arch-row">
-                                <div class="arch-step">
-                                    <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
-                                    <span>Browser</span>
-                                    <small>Port 8000</small>
-                                </div>
-                                <div class="arch-connector"><div class="connector-line"></div><div class="connector-arrow"></div><span class="connector-label">HTTP</span></div>
-                                <div class="arch-zone">
-                                    <div class="zone-label">Private VPC</div>
-                                    <div class="arch-zone-row">
-                                        <div class="arch-zone-inner">
-                                            <div class="zone-label-sm">Public Subnet</div>
-                                            <div class="arch-step step-aws">
-                                                <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
-                                                <span>EC2 (t2.micro)</span>
-                                                <small>FastAPI + Uvicorn</small>
-                                            </div>
-                                        </div>
-                                        <div class="arch-connector"><div class="connector-line connector-private"></div><div class="connector-arrow"></div><span class="connector-label">port 5432</span></div>
-                                        <div class="arch-zone-inner">
-                                            <div class="zone-label-sm">Private Subnet</div>
-                                            <div class="arch-step step-aws">
-                                                <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
-                                                <span>RDS PostgreSQL</span>
-                                                <small>No public access</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="arch-note">Security groups: EC2 allows port 8000 (public) + SSH (my IP). RDS allows port 5432 from EC2 SG only.</div>
-                        </div>
-                    </div>
-                    <div class="decisions">
-                        <div class="decisions-label">Why these technologies</div>
-                        <div class="decision">
-                            <strong>EC2 over Lambda for the app server</strong>
-                            <p>This is a stateful web app with server-rendered templates, WebSocket-like interactions, and persistent database connections. Lambda has a 15-minute timeout and cold starts that would break the user experience. EC2 gives full control over the runtime.</p>
-                        </div>
-                        <div class="decision">
-                            <strong>RDS over self-managed PostgreSQL on EC2</strong>
-                            <p>Running PostgreSQL on EC2 means managing backups, patches, failover, and monitoring yourself. RDS handles all of that automatically. The tradeoff is cost (~$15/month vs ~$0 on EC2), but the operational burden of self-managing a database isn't worth it.</p>
-                        </div>
-                        <div class="decision">
-                            <strong>Private RDS with security group isolation</strong>
-                            <p>RDS has no public IP. Only the EC2 security group can reach port 5432. Even if someone gets the database credentials, they can't connect from outside the VPC. This is defense in depth — multiple security layers.</p>
-                        </div>
-                    </div>
-                    <div class="learnings">
-                        <div class="learning">Security groups as firewalls — RDS only accepts traffic from the EC2 security group</div>
-                        <div class="learning">systemd service for persistent deployment — survives reboots and auto-restarts</div>
-                        <div class="learning">Full deployment pipeline: Git push, SSH, clone, configure environment, start service</div>
-                    </div>
-                </div>
-                <div class="project-footer">
-                    <a href="https://github.com/enagbeme/job-tracker" target="_blank" class="proj-link">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        View source
-                    </a>
-                    <a href="http://3.16.124.86:8000" target="_blank" class="proj-link live">
+                    <a href="https://caelis.enochenagbem.cloud" target="_blank" class="proj-link live">
                         <span class="live-dot"></span>
                         Live demo
                     </a>
                 </div>
             </article>
 
-            <!-- Project 4 -->
+            <!-- Project H2 — HealthHub -->
             <article class="project">
                 <div class="project-header">
-                    <div class="project-num">04</div>
+                    <div class="project-num">02</div>
+                    <div class="project-meta">
+                        <h3>HealthHub</h3>
+                        <p class="project-type">Epic FHIR Patient Portal</p>
+                    </div>
+                    <div class="project-badges">
+                        <span class="badge badge-red">Epic FHIR</span>
+                        <span class="badge badge-teal">SMART on FHIR</span>
+                        <span class="badge badge-blue">OAuth2 / PKCE</span>
+                        <span class="badge badge-purple">HAPI FHIR</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>A patient-facing portal that authenticates against Epic's FHIR R4 sandbox using SMART-on-FHIR with OAuth2 + PKCE, then retrieves the patient's demographics and clinical data via Epic's developer APIs. Built to learn the Epic developer ecosystem and healthcare interoperability standards firsthand before applying for analyst roles.</p>
+                    <div class="arch-box">
+                        <div class="arch-label">Auth Flow</div>
+                        <div class="arch-diagram">
+                            <div class="arch-row">
+                                <div class="arch-step"><span>User</span><small>/login</small></div>
+                                <div class="arch-connector-sm">→</div>
+                                <div class="arch-step"><span>HealthHub</span><small>Spring Security</small></div>
+                                <div class="arch-connector-sm">→</div>
+                                <div class="arch-step"><span>Epic Authorize</span><small>SMART on FHIR</small></div>
+                                <div class="arch-connector-sm">→</div>
+                                <div class="arch-step"><span>Epic FHIR R4</span><small>Patient / Observation</small></div>
+                            </div>
+                            <div class="arch-note">Spring Boot &middot; Spring Security OAuth2 Client with PKCE (public client) &middot; HAPI FHIR for resource parsing &middot; Epic's developer sandbox at fhir.epic.com.</div>
+                        </div>
+                    </div>
+                    <div class="decisions">
+                        <div class="decisions-label">Why these choices</div>
+                        <div class="decision">
+                            <strong>SMART on FHIR over a custom OAuth flow</strong>
+                            <p>SMART on FHIR is the standard Epic and every major EHR vendor use for patient-app authorization. Using the standard means the same code would work against Cerner, Allscripts, or Athenahealth sandboxes with only a configuration change.</p>
+                        </div>
+                        <div class="decision">
+                            <strong>PKCE with a public client over a confidential client secret</strong>
+                            <p>For browser-launched patient apps Epic requires PKCE. A static client secret can't be stored in a browser app without exposure, so PKCE provides one-time proof of possession during the code exchange.</p>
+                        </div>
+                        <div class="decision">
+                            <strong>HAPI FHIR library over raw JSON parsing</strong>
+                            <p>HAPI gives strongly-typed FHIR resources (Patient, Observation, MedicationRequest) with validation built in. Faster to develop against and forward-compatible with FHIR R4 → R5.</p>
+                        </div>
+                    </div>
+                    <div class="learnings">
+                        <div class="learning">Epic developer ecosystem: app registration at <code>fhir.epic.com</code>, sandbox propagation, scope strings</div>
+                        <div class="learning">FHIR R4 resources: Patient, Observation, MedicationRequest, AllergyIntolerance — the building blocks of clinical interop</div>
+                        <div class="learning">OAuth2 + PKCE flow end to end: authorize → code exchange → access token → resource fetch</div>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/enagbeme/healthhub" target="_blank" class="proj-link">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        View source
+                    </a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Cloud Engineering Projects -->
+    <section class="projects" id="cloud">
+        <div class="container">
+            <span class="overline">Cloud Engineering</span>
+            <h2 class="sec-heading">Production AWS, end to end<br>and all defined in code<span class="heading-dot">.</span></h2>
+
+            <!-- Project 1 -->
+            <article class="project">
+                <div class="project-header">
+                    <div class="project-num">01</div>
                     <div class="project-meta">
                         <h3>Containerized CI/CD Pipeline</h3>
                         <p class="project-type">Docker + ECS Fargate + GitHub Actions</p>
@@ -427,10 +335,10 @@
                 </div>
             </article>
 
-            <!-- Project 5 -->
+            <!-- Project 2 -->
             <article class="project">
                 <div class="project-header">
-                    <div class="project-num">05</div>
+                    <div class="project-num">02</div>
                     <div class="project-meta">
                         <h3>Terraform Infrastructure</h3>
                         <p class="project-type">Infrastructure as Code</p>
@@ -498,185 +406,10 @@
                 </div>
             </article>
 
-            <!-- Project 6 -->
+            <!-- Project 3 -->
             <article class="project">
                 <div class="project-header">
-                    <div class="project-num">06</div>
-                    <div class="project-meta">
-                        <h3>Cloud Monitoring & Alerts</h3>
-                        <p class="project-type">Observability + Incident Alerting</p>
-                    </div>
-                    <div class="project-badges">
-                        <span class="badge badge-blue">CloudWatch</span>
-                        <span class="badge badge-red">SNS</span>
-                        <span class="badge badge-purple">Terraform</span>
-                    </div>
-                </div>
-                <div class="project-body">
-                    <p>Built a monitoring layer on top of my ECS infrastructure. CloudWatch dashboard tracks CPU, memory, and running tasks in real-time. Four alarms watch for spikes, crashes, and application errors — and email me via SNS before users notice anything is wrong.</p>
-                    <div class="arch-box">
-                        <div class="arch-label">Architecture</div>
-                        <div class="arch-diagram">
-                            <div class="arch-row">
-                                <div class="arch-zone">
-                                    <div class="zone-label">ECS Fargate</div>
-                                    <div class="arch-step step-aws">
-                                        <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
-                                        <span>Container</span>
-                                        <small>CPU + Memory + Logs</small>
-                                    </div>
-                                </div>
-                                <div class="arch-connector"><div class="connector-line"></div><div class="connector-arrow"></div><span class="connector-label">metrics</span></div>
-                                <div class="arch-zone">
-                                    <div class="zone-label">CloudWatch</div>
-                                    <div class="arch-step-split">
-                                        <div class="arch-step step-aws mini">
-                                            <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-10"/></svg></div>
-                                            <span>Dashboard</span>
-                                        </div>
-                                        <div class="arch-step step-aws mini">
-                                            <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>
-                                            <span>4 Alarms</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="arch-connector"><div class="connector-line connector-event"></div><div class="connector-arrow"></div><span class="connector-label">alarm fires</span></div>
-                                <div class="arch-zone">
-                                    <div class="zone-label">Notification</div>
-                                    <div class="arch-step-split">
-                                        <div class="arch-step step-aws mini">
-                                            <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg></div>
-                                            <span>SNS Topic</span>
-                                        </div>
-                                        <div class="arch-step step-aws mini">
-                                            <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-                                            <span>Email Alert</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="arch-note">Log metric filter scans application logs for "ERROR" → creates custom metric → alarm fires when error count spikes.</div>
-                        </div>
-                    </div>
-                    <div class="decisions">
-                        <div class="decisions-label">Why these technologies</div>
-                        <div class="decision">
-                            <strong>CloudWatch over third-party monitoring (Datadog, New Relic)</strong>
-                            <p>CloudWatch is native to AWS — zero agents to install, metrics flow automatically from ECS. Third-party tools cost $15-30+/month per host and require agent configuration. For a single-service setup, CloudWatch gives you everything you need at near-zero cost.</p>
-                        </div>
-                        <div class="decision">
-                            <strong>SNS over polling the console manually</strong>
-                            <p>Without alerts, you'd have to check the console to know something's wrong. SNS pushes notifications to you the moment an alarm fires — email, SMS, or even triggering a Lambda for auto-remediation. You know about problems before your users do.</p>
-                        </div>
-                        <div class="decision">
-                            <strong>Log metric filters over custom application metrics</strong>
-                            <p>You could instrument your code to emit custom metrics, but that requires code changes. Metric filters scan existing logs with zero code changes — just define a pattern like "ERROR" and CloudWatch counts matches automatically. It's the fastest path from logs to actionable alerts.</p>
-                        </div>
-                    </div>
-                    <div class="learnings">
-                        <div class="learning">CloudWatch metrics vs logs — metrics are numbers you alarm on, logs are text you search through</div>
-                        <div class="learning">Alarm evaluation — why 2 consecutive periods prevents false positives from single spikes</div>
-                        <div class="learning">Metric filters bridge logs into metrics — turning text patterns into countable, alarmable numbers</div>
-                    </div>
-                </div>
-                <div class="project-footer">
-                    <a href="https://github.com/enagbeme/cloud-monitoring" target="_blank" class="proj-link">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        View source
-                    </a>
-                </div>
-            </article>
-
-            <!-- Project 7 -->
-            <article class="project">
-                <div class="project-header">
-                    <div class="project-num">07</div>
-                    <div class="project-meta">
-                        <h3>Portfolio Infrastructure</h3>
-                        <p class="project-type">Custom Domain + HTTPS + Auto-Deploy</p>
-                    </div>
-                    <div class="project-badges">
-                        <span class="badge badge-blue">Route 53</span>
-                        <span class="badge badge-green">Nginx</span>
-                        <span class="badge badge-orange">SSL</span>
-                    </div>
-                </div>
-                <div class="project-body">
-                    <p>This portfolio isn't hosted on Netlify or Vercel — I built the hosting infrastructure myself. Custom domain registered, DNS managed through Route 53, served by Nginx on a Linux VPS with free HTTPS from Let's Encrypt. Auto-deploys from GitHub every 5 minutes via cron.</p>
-                    <div class="arch-box">
-                        <div class="arch-label">Architecture</div>
-                        <div class="arch-diagram">
-                            <div class="arch-row">
-                                <div class="arch-step">
-                                    <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 22v-4a4.8 4.8 0 00-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 004 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></div>
-                                    <span>git push</span>
-                                    <small>GitHub</small>
-                                </div>
-                                <div class="arch-connector"><div class="connector-line"></div><div class="connector-arrow"></div><span class="connector-label">cron pull</span></div>
-                                <div class="arch-zone">
-                                    <div class="zone-label">Linux VPS (Contabo)</div>
-                                    <div class="arch-zone-row">
-                                        <div class="arch-step step-aws mini">
-                                            <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
-                                            <span>Nginx</span>
-                                        </div>
-                                        <div class="arch-connector-sm">+</div>
-                                        <div class="arch-step step-aws mini">
-                                            <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
-                                            <span>Let's Encrypt</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="arch-connector"><div class="connector-line connector-private"></div><div class="connector-arrow"></div><span class="connector-label">HTTPS</span></div>
-                                <div class="arch-zone">
-                                    <div class="zone-label">AWS</div>
-                                    <div class="arch-step step-aws">
-                                        <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
-                                        <span>Route 53 DNS</span>
-                                        <small>enochenagbem.cloud</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="arch-note">Certbot auto-renews SSL every 90 days. Cron pulls from GitHub every 5 minutes. Zero manual deployment.</div>
-                        </div>
-                    </div>
-                    <div class="decisions">
-                        <div class="decisions-label">Why these technologies</div>
-                        <div class="decision">
-                            <strong>Self-hosted VPS over Netlify or Vercel</strong>
-                            <p>Netlify deploys in one click, but you learn nothing about infrastructure. Hosting on a VPS means configuring Nginx, managing SSL certificates, writing deploy scripts, and understanding how DNS routes traffic to a server. That's the actual job.</p>
-                        </div>
-                        <div class="decision">
-                            <strong>Let's Encrypt over paid SSL certificates</strong>
-                            <p>Let's Encrypt provides free, automated, and trusted SSL certificates. Paid certs ($50-200/year) offer the same encryption with no practical security difference. Certbot automates renewal every 90 days — set it and forget it.</p>
-                        </div>
-                        <div class="decision">
-                            <strong>Cron-based deploy over webhook CI/CD</strong>
-                            <p>A GitHub webhook would trigger instant deploys, but requires exposing an endpoint and handling authentication. A 5-minute cron job is simpler, secure (pull-based, not push-based), and good enough for a portfolio — updates are live within minutes of a push.</p>
-                        </div>
-                    </div>
-                    <div class="learnings">
-                        <div class="learning">Nginx server blocks — virtual hosting, SSL termination, and static file serving</div>
-                        <div class="learning">DNS management — A records, CNAME records, nameserver delegation from registrar to Route 53</div>
-                        <div class="learning">Linux server administration — SSH, cron, systemd, file permissions, firewall</div>
-                    </div>
-                </div>
-                <div class="project-footer">
-                    <a href="https://github.com/enagbeme/cloud-portfolio" target="_blank" class="proj-link">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        View source
-                    </a>
-                    <a href="https://enochenagbem.cloud" target="_blank" class="proj-link live">
-                        <span class="live-dot"></span>
-                        Live demo
-                    </a>
-                </div>
-            </article>
-
-            <!-- Project 8 -->
-            <article class="project">
-                <div class="project-header">
-                    <div class="project-num">08</div>
+                    <div class="project-num">03</div>
                     <div class="project-meta">
                         <h3>Snip — URL Shortener</h3>
                         <p class="project-type">Full-Stack Production App on AWS</p>
@@ -775,41 +508,43 @@
             <div class="about-layout">
                 <div class="about-left">
                     <div class="about-photo">
-                        <img src="headshot.png" alt="Enoch Enagbem" />
+                        <img src="headshot.png" alt="Enoch Kumanyenu" />
                     </div>
                     <span class="overline">About</span>
                     <h2 class="sec-heading">I learn by shipping<span class="heading-dot">.</span></h2>
                     <p>
-                        M.S. in Computer Science from Virginia Commonwealth University (3.8 GPA),
-                        B.S. from Valley View University. Before pivoting to cloud, I spent a year
-                        at EFT Corporation building backend systems for live financial transactions —
-                        authentication, audit logging, and SQL optimization across thousands of daily operations.
+                        Healthcare IT professional with a Master&rsquo;s in Computer Science from
+                        Virginia Commonwealth University (3.8 GPA) and a B.S. from Valley View University.
+                        Before clinical software, I spent a year at EFT Corporation on backend systems
+                        for live financial transactions: authentication, audit logging, and SQL
+                        optimization across thousands of daily operations.
                     </p>
                     <p>
-                        That production background shapes how I approach cloud. I don't just deploy services —
-                        I think about security groups, IAM least-privilege, private subnets, and why architecture
-                        choices matter. Every project here is live. This portfolio itself runs on a Linux VPS
-                        with Nginx, Let's Encrypt SSL, and Route 53 DNS — auto-deployed from GitHub.
-                        Currently teaching Java and Python to 30+ students at Project STEM.
+                        That production discipline now applies to healthcare. Caelis Health is a multi-page
+                        clinical analytics dashboard with 500 patients, 12 providers, and 2,000 visits across
+                        six departments. HealthHub authenticates against Epic&rsquo;s FHIR R4 sandbox using
+                        SMART on FHIR with OAuth2 PKCE. Every project here is live. This portfolio itself
+                        runs on a Linux VPS with Nginx, Let&rsquo;s Encrypt SSL, and Route 53 DNS, auto-deployed
+                        from GitHub. Currently a teaching assistant at Project STEM, supporting 30+ students in Java and Python.
                     </p>
                 </div>
                 <div class="about-right">
                     <div class="skill-block">
-                        <h4>AWS Services</h4>
+                        <h4>Healthcare IT</h4>
                         <div class="skill-list">
-                            <span>EC2</span><span>S3</span><span>RDS</span><span>Lambda</span><span>CloudFront</span><span>Route 53</span><span>ALB</span><span>SNS</span><span>IAM</span><span>VPC</span><span>CloudWatch</span><span>ECS Fargate</span><span>ECR</span>
+                            <span>Epic FHIR Sandbox</span><span>HL7 FHIR R4</span><span>SMART on FHIR</span><span>OAuth2 PKCE</span><span>HAPI FHIR</span><span>EHR Analytics</span><span>HIPAA Fundamentals</span><span>Clinical Workflows</span>
                         </div>
                     </div>
                     <div class="skill-block">
-                        <h4>Languages & Tools</h4>
+                        <h4>Languages &amp; Frameworks</h4>
                         <div class="skill-list">
-                            <span>Python</span><span>Java</span><span>SQL</span><span>FastAPI</span><span>Spring Boot</span><span>PostgreSQL</span><span>Docker</span><span>Terraform</span><span>Git</span><span>GitHub Actions</span><span>Linux</span><span>Nginx</span>
+                            <span>Java 17</span><span>Spring Boot</span><span>Spring Security</span><span>Spring Data JPA</span><span>Thymeleaf</span><span>Python</span><span>SQL</span><span>FastAPI</span><span>PostgreSQL</span>
                         </div>
                     </div>
                     <div class="skill-block">
-                        <h4>Concepts</h4>
+                        <h4>Cloud &amp; DevOps</h4>
                         <div class="skill-list">
-                            <span>Event-Driven Architecture</span><span>Serverless</span><span>CI/CD</span><span>Containerization</span><span>Infrastructure as Code</span><span>Least Privilege</span><span>Microservices</span>
+                            <span>AWS ECS Fargate</span><span>RDS</span><span>ALB</span><span>Route 53</span><span>VPC</span><span>IAM</span><span>CloudWatch</span><span>Terraform</span><span>Docker</span><span>GitHub Actions</span><span>Linux</span><span>Nginx</span>
                         </div>
                     </div>
                 </div>
@@ -823,7 +558,7 @@
             <div class="contact-inner">
                 <span class="overline">Contact</span>
                 <h2 class="sec-heading">Let's build something<span class="heading-dot">.</span></h2>
-                <p>I'm looking for entry-level Cloud Engineer and DevOps roles. If you think I'd be a good fit, reach out.</p>
+                <p>Open to Healthcare IT roles like Epic Project Manager, Technical Solutions Engineer, and EHR Analyst, as well as cloud engineering positions where both skills apply. If you think I'd be a good fit, reach out.</p>
                 <div class="contact-row">
                     <a href="mailto:enoch.enagbem@gmail.com" class="contact-card">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -853,7 +588,7 @@
 
     <footer class="footer">
         <div class="container">
-            <span>Enoch Enagbem &copy; 2026</span>
+            <span>Enoch Kumanyenu &copy; 2026</span>
         </div>
     </footer>
 
