@@ -59,13 +59,13 @@
                     </div>
                     <div class="current-row">
                         <div class="current-label">Latest</div>
-                        <div class="current-value">HealthHub, Epic FHIR Portal</div>
-                        <div class="current-meta"><a href="https://health.enochenagbem.cloud" target="_blank">health.enochenagbem.cloud &rarr;</a></div>
+                        <div class="current-value">Phanera, Hospital Price Transparency</div>
+                        <div class="current-meta"><a href="https://phanera.enochenagbem.cloud" target="_blank">phanera.enochenagbem.cloud &rarr;</a></div>
                     </div>
                     <div class="current-row">
                         <div class="current-label">Also live</div>
-                        <div class="current-value">Caelis Health, Clinical Analytics</div>
-                        <div class="current-meta"><a href="https://caelis.enochenagbem.cloud" target="_blank">caelis.enochenagbem.cloud &rarr;</a></div>
+                        <div class="current-value">HealthHub &middot; Caelis Health</div>
+                        <div class="current-meta"><a href="https://health.enochenagbem.cloud" target="_blank">health</a> &middot; <a href="https://caelis.enochenagbem.cloud" target="_blank">caelis &rarr;</a></div>
                     </div>
                     <div class="current-row last">
                         <div class="current-label">Based in</div>
@@ -108,12 +108,77 @@
     <section class="projects" id="work">
         <div class="container">
             <span class="overline">Healthcare IT</span>
-            <h2 class="sec-heading">Clinical software, built to learn<br>the Epic ecosystem from the inside<span class="heading-dot">.</span></h2>
+            <h2 class="sec-heading">Three healthcare apps, shipped live<br>from price transparency to Epic FHIR<span class="heading-dot">.</span></h2>
 
-            <!-- Project H1 — Caelis Health -->
+            <!-- Project H1 — Phanera -->
             <article class="project">
                 <div class="project-header">
                     <div class="project-num">01</div>
+                    <div class="project-meta">
+                        <h3>Phanera</h3>
+                        <p class="project-type">Hospital Price Transparency Platform</p>
+                    </div>
+                    <div class="project-badges">
+                        <span class="badge badge-teal">Streaming JSON</span>
+                        <span class="badge badge-blue">PostgreSQL</span>
+                        <span class="badge badge-purple">CMS MRF</span>
+                        <span class="badge badge-green">Data Pipeline</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>Since 2021, U.S. hospitals must publish their full price lists — but they bury them in unreadable 600&nbsp;MB files. Phanera parses those federal price-transparency files from 11 Richmond hospitals and turns them into a simple tool: pick a procedure, see what every hospital charges, ranked cheapest to most expensive. Same procedure, same city, prices that differ by thousands.</p>
+                    <div class="arch-box">
+                        <div class="arch-label">Data Pipeline</div>
+                        <div class="arch-diagram">
+                            <div class="arch-row">
+                                <div class="arch-step"><span>11 hospital MRFs</span><small>CSV + JSON</small></div>
+                                <div class="arch-connector-sm">→</div>
+                                <div class="arch-step"><span>Parsers</span><small>filter to 22 CPT codes</small></div>
+                                <div class="arch-connector-sm">→</div>
+                                <div class="arch-step"><span>PostgreSQL</span><small>~14k price points</small></div>
+                                <div class="arch-connector-sm">→</div>
+                                <div class="arch-step"><span>Ranked compare</span><small>cash vs negotiated</small></div>
+                            </div>
+                            <div class="arch-note">Java 17 &middot; Spring Boot &middot; Jackson streaming parser (handles a 648&nbsp;MB file without loading it into memory) &middot; Apache Commons CSV &middot; PostgreSQL &middot; deployed on Docker + Coolify + Traefik.</div>
+                        </div>
+                    </div>
+                    <div class="decisions">
+                        <div class="decisions-label">Why these choices</div>
+                        <div class="decision">
+                            <strong>Streaming JSON over loading the whole file</strong>
+                            <p>VCU's price file is 648&nbsp;MB; reading it whole would exhaust the heap. A token-by-token Jackson streaming parser walks to the charge array and reads one item at a time, filtering to the ~22 shoppable procedures — bounded memory regardless of file size.</p>
+                        </div>
+                        <div class="decision">
+                            <strong>Two parsers cover ~19 hospitals</strong>
+                            <p>HCA and VCU publish the identical CMS v3.0.0 JSON shape, so one JSON parser plus one CSV parser (Bon Secours) cover every system. The tedious per-hospital normalization is the moat — funded players stay shallow nationally; Phanera goes deep on one metro.</p>
+                        </div>
+                        <div class="decision">
+                            <strong>Filter at parse time</strong>
+                            <p>Raw files hold tens of thousands of rows (every screw, drug, supply). Keeping only rows whose CPT/HCPCS code is a shoppable procedure means the database holds a few thousand useful rows, not millions.</p>
+                        </div>
+                    </div>
+                    <div class="learnings">
+                        <div class="learning">Healthcare revenue-cycle domain: charge masters, CPT/HCPCS codes, payer-negotiated rates, gross vs cash vs negotiated pricing</div>
+                        <div class="learning">CMS Hospital Price Transparency Rule (45 CFR 180) — the data, the formats, the compliance</div>
+                        <div class="learning">Streaming large-file ingestion + multi-format normalization into one schema</div>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/enagbeme/phanera" target="_blank" class="proj-link">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        View source
+                    </a>
+                    <a href="https://phanera.enochenagbem.cloud" target="_blank" class="proj-link live">
+                        <span class="live-dot"></span>
+                        Live demo
+                    </a>
+                </div>
+            </article>
+
+            <!-- Project H2 — Caelis Health -->
+            <article class="project">
+                <div class="project-header">
+                    <div class="project-num">02</div>
                     <div class="project-meta">
                         <h3>Caelis Health</h3>
                         <p class="project-type">Clinical Analytics Platform</p>
@@ -175,10 +240,10 @@
                 </div>
             </article>
 
-            <!-- Project H2 — HealthHub -->
+            <!-- Project H3 — HealthHub -->
             <article class="project">
                 <div class="project-header">
-                    <div class="project-num">02</div>
+                    <div class="project-num">03</div>
                     <div class="project-meta">
                         <h3>HealthHub</h3>
                         <p class="project-type">Epic FHIR Patient Portal</p>
@@ -519,12 +584,13 @@
                         optimization across thousands of daily operations.
                     </p>
                     <p>
-                        That production discipline now applies to healthcare. Caelis Health is a multi-page
-                        clinical analytics dashboard with 500 patients, 12 providers, and 2,000 visits across
-                        six departments. HealthHub authenticates against Epic&rsquo;s FHIR R4 sandbox using
-                        SMART on FHIR with OAuth2 PKCE. Every project here is live. This portfolio itself
-                        runs on a Linux VPS with Nginx, Let&rsquo;s Encrypt SSL, and Route 53 DNS, auto-deployed
-                        from GitHub. Currently a teaching assistant at Project STEM, supporting 30+ students in Java and Python.
+                        That production discipline now applies to healthcare. Phanera parses 11 hospitals&rsquo;
+                        federal price-transparency files into a live price-comparison tool. Caelis Health is a
+                        multi-page clinical analytics dashboard across 500 patients and 2,000 visits. HealthHub
+                        authenticates against Epic&rsquo;s FHIR R4 sandbox using SMART on FHIR with OAuth2 PKCE.
+                        All three are live, each deployed on a Linux VPS with Docker, Traefik, and auto-issued SSL,
+                        shipped from GitHub. Currently a teaching assistant at Project STEM, supporting 30+ students
+                        in Java and Python.
                     </p>
                 </div>
                 <div class="about-right">
