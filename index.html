@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enoch Kumanyenu | Healthcare IT &middot; Cloud Engineer</title>
+    <title>Enoch Kumanyenu | Healthcare IT &middot; Epic &amp; Imaging Analyst</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -14,8 +14,7 @@
     <nav class="nav">
         <a href="#" class="nav-name">Enoch Kumanyenu</a>
         <div class="nav-links">
-            <a href="#work">Healthcare</a>
-            <a href="#cloud">Cloud</a>
+            <a href="#work">Projects</a>
             <a href="#about">About</a>
             <a href="#contact" class="nav-contact">Let's Talk</a>
         </div>
@@ -28,13 +27,12 @@
             <div class="hero-left">
                 <div class="hero-tag">
                     <span class="pulse"></span>
-                    Open to healthcare IT &amp; Epic analyst roles
+                    Open to healthcare IT, Epic &amp; imaging analyst roles
                 </div>
                 <h1>Healthcare IT professional.<br>Software that <span class="hero-accent">supports care.</span></h1>
                 <p class="hero-desc">
-                    Master&rsquo;s in Computer Science. Spring Boot, Epic FHIR,
-                    EHR analytics, and the production cloud infrastructure to deploy
-                    it safely.
+                    Master&rsquo;s in Computer Science. I build with Epic FHIR, HL7,
+                    and healthcare data, focused on Epic, EHR, and imaging (PACS) systems.
                 </p>
                 <div class="hero-links">
                     <a href="https://github.com/enagbeme" target="_blank" class="hero-link">
@@ -77,30 +75,23 @@
         </div>
     </section>
 
-    <!-- Services strip -->
+    <!-- Tech strip -->
     <section class="services-strip">
         <div class="strip-inner">
             <div class="service-pill"><span class="pill-dot pill-red"></span>Epic FHIR</div>
             <div class="service-pill"><span class="pill-dot pill-teal"></span>HL7 FHIR R4</div>
             <div class="service-pill"><span class="pill-dot pill-green"></span>SMART on FHIR</div>
+            <div class="service-pill"><span class="pill-dot pill-blue"></span>DICOM</div>
+            <div class="service-pill"><span class="pill-dot pill-purple"></span>PACS</div>
+            <div class="service-pill"><span class="pill-dot pill-orange"></span>Epic Radiant</div>
             <div class="service-pill"><span class="pill-dot pill-amber"></span>HIPAA</div>
-            <div class="service-pill"><span class="pill-dot pill-blue"></span>Spring Boot</div>
+            <div class="service-pill"><span class="pill-dot pill-teal"></span>EHR Analytics</div>
+            <div class="service-pill"><span class="pill-dot pill-green"></span>Revenue Cycle</div>
+            <div class="service-pill"><span class="pill-dot pill-blue"></span>SQL</div>
             <div class="service-pill"><span class="pill-dot pill-purple"></span>Java 17</div>
-            <div class="service-pill"><span class="pill-dot pill-orange"></span>EC2</div>
-            <div class="service-pill"><span class="pill-dot pill-blue"></span>S3</div>
-            <div class="service-pill"><span class="pill-dot pill-green"></span>Lambda</div>
-            <div class="service-pill"><span class="pill-dot pill-purple"></span>RDS</div>
-            <div class="service-pill"><span class="pill-dot pill-teal"></span>CloudFront</div>
-            <div class="service-pill"><span class="pill-dot pill-red"></span>SNS</div>
-            <div class="service-pill"><span class="pill-dot pill-amber"></span>IAM</div>
-            <div class="service-pill"><span class="pill-dot pill-blue"></span>VPC</div>
-            <div class="service-pill"><span class="pill-dot pill-green"></span>CloudWatch</div>
-            <div class="service-pill"><span class="pill-dot pill-blue"></span>ECS</div>
-            <div class="service-pill"><span class="pill-dot pill-orange"></span>ECR</div>
-            <div class="service-pill"><span class="pill-dot pill-teal"></span>Route 53</div>
-            <div class="service-pill"><span class="pill-dot pill-green"></span>Nginx</div>
-            <div class="service-pill"><span class="pill-dot pill-amber"></span>Let's Encrypt</div>
-            <div class="service-pill"><span class="pill-dot pill-blue"></span>ALB</div>
+            <div class="service-pill"><span class="pill-dot pill-red"></span>Spring Boot</div>
+            <div class="service-pill"><span class="pill-dot pill-green"></span>Python</div>
+            <div class="service-pill"><span class="pill-dot pill-blue"></span>Docker</div>
         </div>
     </section>
 
@@ -307,265 +298,6 @@
         </div>
     </section>
 
-    <!-- Cloud Engineering Projects -->
-    <section class="projects" id="cloud">
-        <div class="container">
-            <span class="overline">Cloud Engineering</span>
-            <h2 class="sec-heading">Production AWS, end to end<br>and all defined in code<span class="heading-dot">.</span></h2>
-
-            <!-- Project 1 -->
-            <article class="project">
-                <div class="project-header">
-                    <div class="project-num">01</div>
-                    <div class="project-meta">
-                        <h3>Containerized CI/CD Pipeline</h3>
-                        <p class="project-type">Docker + ECS Fargate + GitHub Actions</p>
-                    </div>
-                    <div class="project-badges">
-                        <span class="badge badge-blue">ECS</span>
-                        <span class="badge badge-orange">ECR</span>
-                        <span class="badge badge-green">CI/CD</span>
-                    </div>
-                </div>
-                <div class="project-body">
-                    <p>Took the Job Tracker from manual EC2 deployment to a fully automated container pipeline. Docker image builds on every push, gets stored in ECR, and deploys to ECS Fargate — zero SSH, zero downtime, zero servers to manage.</p>
-                    <div class="arch-box">
-                        <div class="arch-label">Architecture</div>
-                        <div class="arch-diagram">
-                            <div class="arch-row">
-                                <div class="arch-step">
-                                    <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 22v-4a4.8 4.8 0 00-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 004 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></div>
-                                    <span>git push</span>
-                                    <small>Developer</small>
-                                </div>
-                                <div class="arch-connector"><div class="connector-line connector-event"></div><div class="connector-arrow"></div><span class="connector-label">webhook</span></div>
-                                <div class="arch-zone">
-                                    <div class="zone-label">CI/CD Pipeline</div>
-                                    <div class="arch-step step-aws">
-                                        <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5"/><path d="M12 12v9"/><path d="M12 12L4 7.5"/></svg></div>
-                                        <span>GitHub Actions</span>
-                                        <small>Build + test + push</small>
-                                    </div>
-                                </div>
-                                <div class="arch-connector"><div class="connector-line"></div><div class="connector-arrow"></div><span class="connector-label">image</span></div>
-                                <div class="arch-zone">
-                                    <div class="zone-label">AWS</div>
-                                    <div class="arch-zone-row">
-                                        <div class="arch-step step-aws mini">
-                                            <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
-                                            <span>ECR</span>
-                                        </div>
-                                        <div class="arch-connector-sm">&#8594;</div>
-                                        <div class="arch-step step-aws mini">
-                                            <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
-                                            <span>ECS Fargate</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="arch-note">Each commit SHA is used as the image tag for full traceability. Rollback = redeploy a previous tag.</div>
-                        </div>
-                    </div>
-                    <div class="decisions">
-                        <div class="decisions-label">Why these technologies</div>
-                        <div class="decision">
-                            <strong>ECS Fargate over EC2 for containers</strong>
-                            <p>EC2 means patching the OS, monitoring disk space, managing Docker daemon, and scaling manually. Fargate removes all of that — you define CPU/memory and AWS handles the rest. The tradeoff is less control over the host, but for a web app that's a good trade.</p>
-                        </div>
-                        <div class="decision">
-                            <strong>ECR over Docker Hub</strong>
-                            <p>ECR is private by default and in the same AWS network as ECS, so image pulls are fast and free. Docker Hub has rate limits on free accounts (100 pulls/6 hours) which can break CI/CD pipelines.</p>
-                        </div>
-                        <div class="decision">
-                            <strong>GitHub Actions over Jenkins or CodePipeline</strong>
-                            <p>GitHub Actions lives where the code lives — no separate CI server to manage. AWS CodePipeline would add another AWS service to maintain. Jenkins would need its own EC2 instance. GitHub Actions is free for public repos and has official AWS actions.</p>
-                        </div>
-                    </div>
-                    <div class="learnings">
-                        <div class="learning">Docker multi-layer caching — dependencies installed before code for fast rebuilds</div>
-                        <div class="learning">GitHub Actions CI/CD — auto deploys on every push to main, zero manual steps</div>
-                        <div class="learning">Evolution from manual EC2 + systemd to serverless Fargate containers</div>
-                    </div>
-                </div>
-                <div class="project-footer">
-                    <a href="https://github.com/enagbeme/job-tracker" target="_blank" class="proj-link">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        View source
-                    </a>
-                    <a href="http://3.144.48.59:8000" target="_blank" class="proj-link live">
-                        <span class="live-dot"></span>
-                        Live demo
-                    </a>
-                </div>
-            </article>
-
-            <!-- Project 2 -->
-            <article class="project">
-                <div class="project-header">
-                    <div class="project-num">02</div>
-                    <div class="project-meta">
-                        <h3>Terraform Infrastructure</h3>
-                        <p class="project-type">Infrastructure as Code</p>
-                    </div>
-                    <div class="project-badges">
-                        <span class="badge badge-purple">Terraform</span>
-                        <span class="badge badge-blue">ECS</span>
-                        <span class="badge badge-orange">ECR</span>
-                    </div>
-                </div>
-                <div class="project-body">
-                    <p>Took everything I built by hand in the AWS Console and defined it as code. One command creates the entire infrastructure — ECR, ECS Fargate, IAM roles, security groups, CloudWatch logging. One command tears it all down. Version-controlled, reviewable, reproducible.</p>
-                    <div class="arch-box">
-                        <div class="arch-label">Architecture</div>
-                        <div class="arch-diagram">
-                            <div class="arch-row">
-                                <div class="arch-step">
-                                    <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-                                    <span>.tf files</span>
-                                    <small>8 files, 7 resources</small>
-                                </div>
-                                <div class="arch-connector"><div class="connector-line connector-event"></div><div class="connector-arrow"></div><span class="connector-label">plan &rarr; apply</span></div>
-                                <div class="arch-zone">
-                                    <div class="zone-label">Terraform creates on AWS</div>
-                                    <div class="arch-resource-grid">
-                                        <div class="resource-item"><span class="resource-dot resource-blue"></span>ECS Cluster</div>
-                                        <div class="resource-item"><span class="resource-dot resource-blue"></span>ECS Service</div>
-                                        <div class="resource-item"><span class="resource-dot resource-blue"></span>Task Definition</div>
-                                        <div class="resource-item"><span class="resource-dot resource-orange"></span>ECR Repository</div>
-                                        <div class="resource-item"><span class="resource-dot resource-green"></span>IAM Role + Policy</div>
-                                        <div class="resource-item"><span class="resource-dot resource-purple"></span>Security Group</div>
-                                        <div class="resource-item"><span class="resource-dot resource-red"></span>CloudWatch Logs</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="arch-note">State file tracks every resource. <code>terraform destroy</code> removes all 7 in the correct dependency order.</div>
-                        </div>
-                    </div>
-                    <div class="decisions">
-                        <div class="decisions-label">Why these technologies</div>
-                        <div class="decision">
-                            <strong>Terraform over CloudFormation</strong>
-                            <p>CloudFormation is AWS-only. Terraform works with AWS, GCP, Azure, and 3,000+ providers. If I ever work with multi-cloud or non-AWS services, the same tool and language apply. The tradeoff is that CloudFormation has tighter AWS integration and catches some errors earlier.</p>
-                        </div>
-                        <div class="decision">
-                            <strong>IaC over console clicking</strong>
-                            <p>The console is fine for learning, but infrastructure built by hand is undocumented, unreproducible, and unauditable. With Terraform, the code IS the documentation. Changes go through pull requests. If a region goes down, <code>terraform apply</code> rebuilds everything elsewhere in minutes.</p>
-                        </div>
-                        <div class="decision">
-                            <strong>Separate repo over embedding in the app repo</strong>
-                            <p>Infrastructure and application code have different lifecycles. App code changes daily; infrastructure changes rarely. Separate repos mean separate CI/CD pipelines, separate permissions, and clearer ownership. The tradeoff is managing two repos instead of one.</p>
-                        </div>
-                    </div>
-                    <div class="learnings">
-                        <div class="learning">Declarative IaC — define what you want, Terraform figures out how to build it</div>
-                        <div class="learning">Plan before apply — always preview changes before they hit production</div>
-                        <div class="learning">State management — Terraform tracks resources and detects drift</div>
-                    </div>
-                </div>
-                <div class="project-footer">
-                    <a href="https://github.com/enagbeme/terraform-infra" target="_blank" class="proj-link">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        View source
-                    </a>
-                </div>
-            </article>
-
-            <!-- Project 3 -->
-            <article class="project">
-                <div class="project-header">
-                    <div class="project-num">03</div>
-                    <div class="project-meta">
-                        <h3>Snip — URL Shortener</h3>
-                        <p class="project-type">Full-Stack Production App on AWS</p>
-                    </div>
-                    <div class="project-badges">
-                        <span class="badge badge-blue">ECS</span>
-                        <span class="badge badge-green">RDS</span>
-                        <span class="badge badge-purple">Terraform</span>
-                        <span class="badge badge-orange">ALB</span>
-                    </div>
-                </div>
-                <div class="project-body">
-                    <p>A production URL shortener with click analytics. Paste a long URL, get a short trackable link. Every click is logged — timestamp, IP, referrer — and displayed on an analytics dashboard. Built with Java Spring Boot, deployed on ECS Fargate behind an Application Load Balancer with HTTPS. Entire infrastructure — 34 AWS resources — defined in Terraform.</p>
-                    <div class="arch-box">
-                        <div class="arch-label">Architecture</div>
-                        <div class="arch-diagram">
-                            <div class="arch-row">
-                                <div class="arch-step">
-                                    <div class="step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
-                                    <span>User</span>
-                                    <small>HTTPS</small>
-                                </div>
-                                <div class="arch-connector"><div class="connector-line"></div><div class="connector-arrow"></div></div>
-                                <div class="arch-zone">
-                                    <div class="zone-label">AWS VPC (us-east-2)</div>
-                                    <div class="arch-zone-row">
-                                        <div class="arch-zone-inner">
-                                            <div class="zone-label-sm">Public Subnet</div>
-                                            <div class="arch-zone-row">
-                                                <div class="arch-step step-aws mini">
-                                                    <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg></div>
-                                                    <span>ALB</span>
-                                                    <small>HTTPS:443</small>
-                                                </div>
-                                                <div class="arch-connector-sm">→</div>
-                                                <div class="arch-step step-aws mini">
-                                                    <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
-                                                    <span>ECS Fargate</span>
-                                                    <small>Spring Boot</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="arch-connector"><div class="connector-line connector-private"></div><div class="connector-arrow"></div><span class="connector-label">port 5432</span></div>
-                                        <div class="arch-zone-inner">
-                                            <div class="zone-label-sm">Private Subnet</div>
-                                            <div class="arch-step step-aws mini">
-                                                <div class="step-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
-                                                <span>RDS PostgreSQL</span>
-                                                <small>No public access</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="arch-note">34 AWS resources defined in Terraform. GitHub Actions builds + deploys on every push to main. Route 53 → ALB → ECS → RDS chain with security group isolation at every layer.</div>
-                        </div>
-                    </div>
-                    <div class="decisions">
-                        <div class="decisions-label">Why these technologies</div>
-                        <div class="decision">
-                            <strong>Application Load Balancer over exposing ECS directly</strong>
-                            <p>ECS Fargate tasks get public IPs but no SSL support. The ALB terminates HTTPS, runs health checks, and allows scaling to multiple containers without changing DNS. Without it, there's no HTTPS, no health monitoring, and no zero-downtime deployments.</p>
-                        </div>
-                        <div class="decision">
-                            <strong>Java Spring Boot over Python FastAPI</strong>
-                            <p>Most enterprise cloud and backend roles use Java. Spring Boot has built-in dependency injection, JPA for database access, and Thymeleaf for server-side rendering — a complete production framework. The tradeoff is a heavier JAR and longer build times vs FastAPI's simplicity.</p>
-                        </div>
-                        <div class="decision">
-                            <strong>RDS in a private subnet over a public database</strong>
-                            <p>The database has no public IP. Only the ECS security group can reach port 5432. Even with valid credentials, external connections are blocked at the network level. Defense in depth — security groups + private subnet + VPC isolation.</p>
-                        </div>
-                    </div>
-                    <div class="learnings">
-                        <div class="learning">VPC design with public/private subnets — ALB in public, RDS in private, security group chaining</div>
-                        <div class="learning">ALB health checks and HTTPS termination — SSL at the load balancer, plain HTTP internally</div>
-                        <div class="learning">Spring Data JPA entity lifecycle — managed vs detached entities and transaction boundaries</div>
-                    </div>
-                </div>
-                <div class="project-footer">
-                    <a href="https://github.com/enagbeme/url-shortener" target="_blank" class="proj-link">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        View source
-                    </a>
-                    <a href="https://link.enochenagbem.cloud" target="_blank" class="proj-link live">
-                        <span class="live-dot"></span>
-                        Live demo
-                    </a>
-                </div>
-            </article>
-        </div>
-    </section>
-
     <!-- About -->
     <section class="about" id="about">
         <div class="container">
@@ -597,7 +329,7 @@
                     <div class="skill-block">
                         <h4>Healthcare IT</h4>
                         <div class="skill-list">
-                            <span>Epic FHIR Sandbox</span><span>HL7 FHIR R4</span><span>SMART on FHIR</span><span>OAuth2 PKCE</span><span>HAPI FHIR</span><span>EHR Analytics</span><span>HIPAA Fundamentals</span><span>Clinical Workflows</span>
+                            <span>Epic FHIR</span><span>HL7 FHIR R4</span><span>SMART on FHIR</span><span>Imaging Interoperability</span><span>Epic Radiant</span><span>HAPI FHIR</span><span>EHR Analytics</span><span>Revenue Cycle</span><span>HIPAA</span><span>Clinical Workflows</span>
                         </div>
                     </div>
                     <div class="skill-block">
@@ -607,9 +339,9 @@
                         </div>
                     </div>
                     <div class="skill-block">
-                        <h4>Cloud &amp; DevOps</h4>
+                        <h4>Data &amp; Tools</h4>
                         <div class="skill-list">
-                            <span>AWS ECS Fargate</span><span>RDS</span><span>ALB</span><span>Route 53</span><span>VPC</span><span>IAM</span><span>CloudWatch</span><span>Terraform</span><span>Docker</span><span>GitHub Actions</span><span>Linux</span><span>Nginx</span>
+                            <span>SQL</span><span>PostgreSQL</span><span>Data Analysis</span><span>Reporting</span><span>Chart.js</span><span>Git</span><span>Docker</span><span>Linux</span>
                         </div>
                     </div>
                 </div>
@@ -623,7 +355,7 @@
             <div class="contact-inner">
                 <span class="overline">Contact</span>
                 <h2 class="sec-heading">Let's build something<span class="heading-dot">.</span></h2>
-                <p>Open to Healthcare IT roles like Epic Project Manager, Technical Solutions Engineer, and EHR Analyst, as well as cloud engineering positions where both skills apply. If you think I'd be a good fit, reach out.</p>
+                <p>Open to Healthcare IT roles: Epic and EHR analyst, systems and application analyst, PACS and imaging IT, data and quality analyst, and clinical informatics. If you think I&rsquo;d be a good fit, reach out.</p>
                 <div class="contact-row">
                     <a href="mailto:enoch.enagbem@gmail.com" class="contact-card">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
