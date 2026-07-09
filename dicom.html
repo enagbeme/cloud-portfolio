@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aperture | Browser-Based DICOM Viewer &middot; Enoch Kumanyenu</title>
+    <meta name="description" content="Aperture is a fully client-side DICOM viewer: open a .dcm medical image in the browser, window/level it, and read the DICOM tags. No server, no upload.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+    :root{
+        --bg:#0b0b0e; --panel:#15151a; --panel2:#1c1c22; --stage:#050506;
+        --ink:#f1f1ef; --ink2:#a8a8a4; --ink3:#767672; --ink4:#45454a;
+        --border:#25252c; --accent:#2dd4bf; --accent2:#14b8a6;
+        --blue:#60a5fa; --green:#34d399; --red:#f87171; --amber:#fbbf24; --purple:#a78bfa;
+        --disp:'Outfit','Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+        --body:'Space Grotesk','Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+        --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
+    a{color:inherit;}
+
+    /* Top bar */
+    .topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
+        padding:0 28px;height:60px;background:rgba(11,11,14,0.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
+    .brand{font-family:var(--disp);font-weight:700;font-size:0.95rem;letter-spacing:-0.3px;text-decoration:none;color:var(--ink);}
+    .brand .dot{color:var(--accent);}
+    .back{font-size:0.82rem;color:var(--ink3);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:7px;transition:color .2s;}
+    .back:hover{color:var(--ink);}
+
+    /* Page head */
+    .head{max-width:1180px;margin:0 auto;padding:34px 28px 18px;}
+    .eyebrow{font-family:var(--mono);font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;color:var(--accent2);margin-bottom:12px;}
+    .head h1{font-family:var(--disp);font-size:clamp(1.7rem,3.4vw,2.3rem);font-weight:800;letter-spacing:-0.02em;line-height:1.12;margin-bottom:12px;}
+    .head p{color:var(--ink2);font-size:0.96rem;max-width:720px;}
+    .head p code{font-family:var(--mono);font-size:0.82em;background:var(--panel2);padding:2px 6px;border-radius:4px;color:var(--accent);}
+    .privacy{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:0.76rem;color:var(--green);
+        background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.22);padding:6px 12px;border-radius:999px;}
+
+    /* Viewer layout */
+    .viewer{max-width:1180px;margin:8px auto 40px;padding:0 28px;display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start;}
+    @media(max-width:900px){.viewer{grid-template-columns:1fr;}}
+
+    .stage{background:var(--panel);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+    .toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 14px;border-bottom:1px solid var(--border);background:var(--panel);}
+    .tbtn{display:inline-flex;align-items:center;gap:7px;padding:7px 12px;font-family:var(--body);font-size:0.78rem;font-weight:600;
+        color:var(--ink2);background:var(--bg);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all .15s;}
+    .tbtn:hover{border-color:var(--accent);color:var(--accent);}
+    .tbtn.primary{background:var(--accent);color:#08120f;border-color:var(--accent);}
+    .tbtn.primary:hover{opacity:.9;color:#08120f;}
+    .tbtn svg{width:14px;height:14px;}
+    .tsep{width:1px;height:22px;background:var(--border);margin:0 2px;}
+    .tgroup{display:inline-flex;align-items:center;gap:4px;}
+    .tlabel{font-family:var(--mono);font-size:0.6rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--ink4);margin-right:2px;}
+    .preset{padding:5px 10px;font-family:var(--mono);font-size:0.68rem;font-weight:500;color:var(--ink3);background:var(--bg);
+        border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all .15s;}
+    .preset:hover{border-color:var(--accent);color:var(--accent);}
+    .preset.active{background:var(--accent);color:#08120f;border-color:var(--accent);}
+
+    .canvas-wrap{position:relative;width:100%;height:min(64vh,620px);min-height:400px;background:
+        radial-gradient(120% 120% at 50% 35%, #0a0a0d 0%, #050506 70%);cursor:crosshair;touch-action:none;overflow:hidden;}
+    #view{display:block;width:100%;height:100%;}
+    .overlay{position:absolute;font-family:var(--mono);font-size:0.68rem;line-height:1.5;color:rgba(45,212,191,0.85);
+        text-shadow:0 1px 3px rgba(0,0,0,0.9);pointer-events:none;white-space:pre;letter-spacing:0.3px;}
+    .overlay.tl{top:12px;left:14px;text-align:left;}
+    .overlay.tr{top:12px;right:14px;text-align:right;color:rgba(168,168,164,0.9);}
+    .overlay.bl{bottom:12px;left:14px;color:rgba(168,168,164,0.9);}
+    .overlay.br{bottom:12px;right:14px;text-align:right;color:rgba(168,168,164,0.9);}
+    .dropzone{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+        color:var(--ink3);font-size:0.9rem;pointer-events:none;transition:background .15s,border-color .15s;}
+    .dropzone svg{width:38px;height:38px;color:var(--ink4);}
+    .canvas-wrap.dragover{outline:2px dashed var(--accent);outline-offset:-10px;}
+    .canvas-wrap.dragover .dropzone{background:rgba(45,212,191,0.05);color:var(--accent);}
+    .msg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);max-width:80%;text-align:center;
+        color:var(--amber);font-size:0.85rem;background:rgba(0,0,0,0.55);padding:12px 16px;border-radius:10px;
+        border:1px solid rgba(251,191,36,0.3);pointer-events:none;display:none;}
+
+    .hint{padding:10px 14px;border-top:1px solid var(--border);font-family:var(--mono);font-size:0.66rem;color:var(--ink4);
+        display:flex;gap:16px;flex-wrap:wrap;}
+    .hint b{color:var(--ink3);font-weight:500;}
+
+    /* Tag panel */
+    .panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;overflow:hidden;position:sticky;top:76px;}
+    .panel-head{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+    .panel-head h3{font-family:var(--disp);font-size:0.92rem;font-weight:700;}
+    .panel-head span{font-family:var(--mono);font-size:0.62rem;color:var(--ink4);text-transform:uppercase;letter-spacing:1.4px;}
+    .tags{max-height:560px;overflow-y:auto;}
+    .tgcat{font-family:var(--mono);font-size:0.58rem;text-transform:uppercase;letter-spacing:1.6px;color:var(--accent2);
+        padding:12px 18px 6px;border-bottom:1px solid var(--border);}
+    .trow{display:grid;grid-template-columns:1fr auto;gap:8px;padding:7px 18px;border-bottom:1px solid rgba(37,37,44,0.5);align-items:baseline;}
+    .trow .tk{font-size:0.74rem;color:var(--ink2);}
+    .trow .tk small{display:block;font-family:var(--mono);font-size:0.58rem;color:var(--ink4);letter-spacing:0.3px;}
+    .trow .tv{font-family:var(--mono);font-size:0.72rem;color:var(--ink);text-align:right;word-break:break-word;max-width:170px;}
+    .tags::-webkit-scrollbar{width:8px;}
+    .tags::-webkit-scrollbar-thumb{background:var(--border);border-radius:8px;}
+
+    .foot{max-width:1180px;margin:0 auto;padding:6px 28px 50px;color:var(--ink4);font-size:0.78rem;}
+    .foot a{color:var(--accent2);text-decoration:none;}
+    .foot a:hover{text-decoration:underline;}
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <a href="/" class="brand">Enoch Kumanyenu<span class="dot">.</span></a>
+        <a href="/#work" class="back">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Back to portfolio
+        </a>
+    </div>
+
+    <div class="head">
+        <div class="eyebrow">Healthcare IT &middot; Medical Imaging</div>
+        <h1>Aperture &mdash; a DICOM viewer in your browser</h1>
+        <p>Radiology runs on <code>DICOM</code>, the file every CT, MRI, and X-ray produces. Aperture opens a real
+        <code>.dcm</code> study entirely client-side: it parses the DICOM header, rescales stored pixels to Hounsfield
+        units, and renders the 16-bit image with interactive window/level, zoom, pan, and CT presets &mdash; the same controls
+        a radiologist uses at a PACS workstation. A synthetic head-phantom study is loaded so it works with one click.</p>
+        <div class="privacy">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Fully client-side &mdash; your image never leaves the browser (no upload, no server)
+        </div>
+    </div>
+
+    <div class="viewer">
+        <div class="stage">
+            <div class="toolbar">
+                <button class="tbtn primary" id="btnSample">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                    Load sample study
+                </button>
+                <button class="tbtn" id="btnOpen">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h5l2 3h9v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+                    Open .dcm
+                </button>
+                <input type="file" id="file" accept=".dcm,application/dicom" style="display:none">
+                <span class="tsep"></span>
+                <button class="tbtn" id="btnFit">Fit</button>
+                <button class="tbtn" id="btnActual">1:1</button>
+                <button class="tbtn" id="btnInvert">Invert</button>
+                <button class="tbtn" id="btnReset">Reset</button>
+                <span class="tsep"></span>
+                <span class="tgroup">
+                    <span class="tlabel">Window</span>
+                    <button class="preset" data-wc="40" data-ww="80">Brain</button>
+                    <button class="preset" data-wc="50" data-ww="400">Soft</button>
+                    <button class="preset" data-wc="500" data-ww="2000">Bone</button>
+                    <button class="preset" data-wc="-600" data-ww="1500">Lung</button>
+                </span>
+            </div>
+            <div class="canvas-wrap" id="wrap">
+                <canvas id="view"></canvas>
+                <div class="overlay tl" id="ovTL"></div>
+                <div class="overlay tr" id="ovTR"></div>
+                <div class="overlay bl" id="ovBL"></div>
+                <div class="overlay br" id="ovBR"></div>
+                <div class="dropzone" id="drop">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m8 11 4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+                    <span>Drop a DICOM (.dcm) file here, or use the buttons above</span>
+                </div>
+                <div class="msg" id="msg"></div>
+            </div>
+            <div class="hint">
+                <span><b>Left-drag</b> window/level</span>
+                <span><b>Wheel</b> zoom</span>
+                <span><b>Right-drag</b> or <b>Shift-drag</b> pan</span>
+            </div>
+        </div>
+
+        <aside class="panel">
+            <div class="panel-head">
+                <h3>DICOM Tags</h3>
+                <span id="tagCount">&mdash;</span>
+            </div>
+            <div class="tags" id="tags"></div>
+        </aside>
+    </div>
+
+    <div class="foot">
+        Vanilla JavaScript &middot; custom DICOM Part 10 parser (Explicit &amp; Implicit VR Little Endian) &middot; modality LUT + VOI
+        windowing &middot; HTML5 Canvas &middot; zero dependencies. &nbsp;<a href="/#work">&larr; more projects</a>
+    </div>
+
+<script>
+"use strict";
+/* ============================================================
+   Aperture — client-side DICOM viewer
+   Writer + parser are byte-identical to the Node-verified core.
+   ============================================================ */
+var LONG_VR = ['OB','OW','OF','SQ','UT','UN','OD','OL','UC','UR'];
+
+/* ---------- DICOM writer (synthetic sample) ---------- */
+function strBytes(vr, value){
+    var s = value==null?'':String(value), b=[];
+    for(var i=0;i<s.length;i++) b.push(s.charCodeAt(i)&0xff);
+    if(b.length%2!==0) b.push(vr==='UI'?0x00:0x20);
+    return Uint8Array.from(b);
+}
+function usBytes(){
+    var vals=[].slice.call(arguments), out=new Uint8Array(vals.length*2), dv=new DataView(out.buffer);
+    for(var i=0;i<vals.length;i++) dv.setUint16(i*2, vals[i]&0xffff, true);
+    return out;
+}
+function element(group, elem, vr, valueBytes){
+    var isLong=LONG_VR.indexOf(vr)!==-1, len=valueBytes.length, header=isLong?12:8;
+    var out=new Uint8Array(header+len), dv=new DataView(out.buffer);
+    dv.setUint16(0,group,true); dv.setUint16(2,elem,true);
+    out[4]=vr.charCodeAt(0); out[5]=vr.charCodeAt(1);
+    if(isLong){dv.setUint32(8,len,true);} else {dv.setUint16(6,len,true);}
+    out.set(valueBytes,header); return out;
+}
+function concatBytes(list){var n=0;list.forEach(function(a){n+=a.length;});var out=new Uint8Array(n),p=0;
+    list.forEach(function(a){out.set(a,p);p+=a.length;});return out;}
+function phantomPixels(rows,cols){
+    var raw=new Uint16Array(rows*cols);
+    function ell(x,y,cx,cy,a,b){return ((x-cx)*(x-cx))/(a*a)+((y-cy)*(y-cy))/(b*b)<=1;}
+    var seed=1337; function rnd(){seed=(seed*1103515245+12345)&0x7fffffff;return seed/0x7fffffff;}
+    for(var r=0;r<rows;r++){for(var c=0;c<cols;c++){
+        var x=(c-cols/2)/(cols/2), y=(r-rows/2)/(rows/2), hu=-1000;
+        if(ell(x,y,0,0.02,0.88,0.94)){
+            hu=45;
+            if(!ell(x,y,0,0.02,0.80,0.86)) hu=1150;
+            else{
+                hu=38+(rnd()-0.5)*12;
+                if(ell(x,y,-0.16,-0.02,0.11,0.20)) hu=12;
+                if(ell(x,y,0.16,-0.02,0.11,0.20)) hu=12;
+                if(ell(x,y,0,0.34,0.07,0.05)) hu=14;
+                if(ell(x,y,-0.05,-0.30,0.035,0.035)) hu=240;
+                if(ell(x,y,0.30,0.30,0.05,0.05)) hu=60;
+            }
+        }
+        var v=Math.round(hu+1024); if(v<0)v=0; if(v>65535)v=65535;
+        raw[r*cols+c]=v;
+    }}
+    return raw;
+}
+function buildSampleDicom(){
+    var rows=256, cols=256, raw=phantomPixels(rows,cols);
+    var pixelBytes=new Uint8Array(raw.buffer.slice(0));
+    var CT='1.2.840.10008.5.1.4.1.1.2', EVRLE='1.2.840.10008.1.2.1', root='1.2.826.0.1.3680043.9.7433';
+    var sop=root+'.1.'+Date.now(), study=root+'.2.1', series=root+'.3.1';
+    var ds=concatBytes([
+        element(0x0008,0x0016,'UI',strBytes('UI',CT)),
+        element(0x0008,0x0018,'UI',strBytes('UI',sop)),
+        element(0x0008,0x0020,'DA',strBytes('DA','20260709')),
+        element(0x0008,0x0030,'TM',strBytes('TM','120000')),
+        element(0x0008,0x0060,'CS',strBytes('CS','CT')),
+        element(0x0008,0x0070,'LO',strBytes('LO','Enoch Imaging Systems')),
+        element(0x0008,0x0090,'PN',strBytes('PN','')),
+        element(0x0008,0x103E,'LO',strBytes('LO','Axial Head Phantom')),
+        element(0x0010,0x0010,'PN',strBytes('PN','ANONYMOUS^PHANTOM')),
+        element(0x0010,0x0020,'LO',strBytes('LO','DEMO-0001')),
+        element(0x0010,0x0040,'CS',strBytes('CS','O')),
+        element(0x0018,0x0050,'DS',strBytes('DS','5.0')),
+        element(0x0018,0x0060,'DS',strBytes('DS','120')),
+        element(0x0020,0x000D,'UI',strBytes('UI',study)),
+        element(0x0020,0x000E,'UI',strBytes('UI',series)),
+        element(0x0020,0x0011,'IS',strBytes('IS','1')),
+        element(0x0020,0x0013,'IS',strBytes('IS','1')),
+        element(0x0028,0x0002,'US',usBytes(1)),
+        element(0x0028,0x0004,'CS',strBytes('CS','MONOCHROME2')),
+        element(0x0028,0x0010,'US',usBytes(rows)),
+        element(0x0028,0x0011,'US',usBytes(cols)),
+        element(0x0028,0x0030,'DS',strBytes('DS','0.9\\0.9')),
+        element(0x0028,0x0100,'US',usBytes(16)),
+        element(0x0028,0x0101,'US',usBytes(16)),
+        element(0x0028,0x0102,'US',usBytes(15)),
+        element(0x0028,0x0103,'US',usBytes(0)),
+        element(0x0028,0x1050,'DS',strBytes('DS','40')),
+        element(0x0028,0x1051,'DS',strBytes('DS','400')),
+        element(0x0028,0x1052,'DS',strBytes('DS','-1024')),
+        element(0x0028,0x1053,'DS',strBytes('DS','1')),
+        element(0x0028,0x1054,'LO',strBytes('LO','HU')),
+        element(0x7FE0,0x0010,'OW',pixelBytes)
+    ]);
+    var metaNoLen=concatBytes([
+        element(0x0002,0x0001,'OB',Uint8Array.from([0x00,0x01])),
+        element(0x0002,0x0002,'UI',strBytes('UI',CT)),
+        element(0x0002,0x0003,'UI',strBytes('UI',sop)),
+        element(0x0002,0x0010,'UI',strBytes('UI',EVRLE)),
+        element(0x0002,0x0012,'UI',strBytes('UI',root+'.1.1')),
+        element(0x0002,0x0013,'SH',strBytes('SH','APERTURE_1.0'))
+    ]);
+    var glVal=new Uint8Array(4); new DataView(glVal.buffer).setUint32(0,metaNoLen.length,true);
+    var groupLen=element(0x0002,0x0000,'UL',glVal);
+    var preamble=new Uint8Array(128), dicm=Uint8Array.from([0x44,0x49,0x43,0x4D]);
+    return concatBytes([preamble,dicm,groupLen,metaNoLen,ds]);
+}
+
+/* ---------- DICOM parser ---------- */
+function tagKey(g,e){var h=function(n){return ('0000'+n.toString(16).toUpperCase()).slice(-4);};return h(g)+h(e);}
+function parseDicom(bytes){
+    var dv=new DataView(bytes.buffer,bytes.byteOffset,bytes.byteLength), p=0;
+    var hasMagic=bytes.length>132 && bytes[128]===0x44&&bytes[129]===0x49&&bytes[130]===0x43&&bytes[131]===0x4D;
+    var transferSyntax='1.2.840.10008.1.2.1';
+    var out={tags:{},pixel:null,encapsulated:false,transferSyntax:transferSyntax};
+    if(hasMagic){
+        p=132;
+        var g0=dv.getUint16(p,true), e0=dv.getUint16(p+2,true), metaEnd=bytes.length;
+        if(g0===0x0002&&e0===0x0000){var gl=dv.getUint32(p+8,true); metaEnd=p+12+gl; p+=12;}
+        var meta={tags:{},pixel:null};
+        parseDataset(dv,p,metaEnd,true,0,meta);
+        if(meta.tags['00020010']) transferSyntax=readStr(dv,meta.tags['00020010']).replace(/[\0\s]+$/,'');
+        out.transferSyntax=transferSyntax; p=metaEnd;
+    }
+    var explicit=transferSyntax!=='1.2.840.10008.1.2';
+    out.bigEndian=transferSyntax==='1.2.840.10008.1.2.2';
+    out.compressed=!(transferSyntax==='1.2.840.10008.1.2'||transferSyntax==='1.2.840.10008.1.2.1'||transferSyntax==='1.2.840.10008.1.2.2');
+    parseDataset(dv,p,bytes.length,explicit,0,out);
+    return out;
+}
+function parseDataset(dv,p,end,explicit,depth,out){
+    while(p+8<=end){
+        var g=dv.getUint16(p,true), e=dv.getUint16(p+2,true);
+        if(g===0xFFFE){var l=dv.getUint32(p+4,true);p+=8;
+            if(e===0xE00D||e===0xE0DD) return p;
+            if(e===0xE000){p=(l===0xFFFFFFFF)?parseDataset(dv,p,end,explicit,depth+1,out):p+l;continue;}
+            continue;}
+        var vr,len,valOff;
+        if(explicit){
+            vr=String.fromCharCode(dv.getUint8(p+4),dv.getUint8(p+5));
+            if(LONG_VR.indexOf(vr)!==-1){len=dv.getUint32(p+8,true);valOff=p+12;}
+            else{len=dv.getUint16(p+6,true);valOff=p+8;}
+        } else {len=dv.getUint32(p+4,true);valOff=p+8;vr='';}
+        if(g===0x7FE0&&e===0x0010){
+            if(len===0xFFFFFFFF){out.encapsulated=true;out.compressed=true;return end;}
+            if(depth===0) out.pixel={offset:valOff,length:len,vr:vr||'OW'};
+            p=valOff+len;continue;
+        }
+        if(vr==='SQ'||len===0xFFFFFFFF){
+            if(len===0xFFFFFFFF) p=parseSequence(dv,valOff,end,explicit,depth+1,out);
+            else p=valOff+len;
+            continue;
+        }
+        if(depth===0) out.tags[tagKey(g,e)]={offset:valOff,length:len,vr:vr};
+        p=valOff+len;
+    }
+    return p;
+}
+function parseSequence(dv,p,end,explicit,depth,out){
+    while(p+8<=end){
+        var g=dv.getUint16(p,true), e=dv.getUint16(p+2,true), len=dv.getUint32(p+4,true); p+=8;
+        if(g===0xFFFE&&e===0xE0DD) return p;
+        if(g===0xFFFE&&e===0xE000){
+            if(len===0xFFFFFFFF) p=parseDataset(dv,p,end,explicit,depth,out);
+            else {parseDataset(dv,p,p+len,explicit,depth,out);p+=len;}
+        } else return p;
+    }
+    return p;
+}
+function readStr(dv,t){if(!t)return '';var s='';for(var i=0;i<t.length;i++)s+=String.fromCharCode(dv.getUint8(t.offset+i));return s;}
+
+/* ---------- Viewer state + rendering ---------- */
+var canvas=document.getElementById('view'), ctx=canvas.getContext('2d');
+var wrap=document.getElementById('wrap'), drop=document.getElementById('drop'), msgEl=document.getElementById('msg');
+var off=document.createElement('canvas'), octx=off.getContext('2d');
+var img=null;                 // {rows,cols,mo,photometric,slope,intercept,isHU,defWC,defWW,meta}
+var view={zoom:1,panX:0,panY:0,wc:40,ww:400,invert:false};
+var dpr=Math.max(1,window.devicePixelRatio||1);
+var cw=0, ch=0;
+
+function fitCanvas(){
+    var rect=wrap.getBoundingClientRect();
+    cw=Math.round(rect.width*dpr); ch=Math.round(rect.height*dpr);
+    canvas.width=cw; canvas.height=ch;
+    canvas.style.width=rect.width+'px'; canvas.style.height=rect.height+'px';
+    if(img) draw();
+}
+function decodeToMo(P, dv){
+    var U=function(k){return P.tags[k]?dv.getUint16(P.tags[k].offset,true):null;};
+    var S=function(k){return P.tags[k]?readStr(dv,P.tags[k]).replace(/[\0]+/g,'').trim():null;};
+    var N=function(k){var s=S(k);if(s==null||s==='')return null;return parseFloat(s.split('\\')[0]);};
+    var rows=U('00280010'), cols=U('00280011');
+    if(!rows||!cols) throw new Error('Missing image dimensions (Rows/Columns).');
+    if(P.compressed || !P.pixel) throw new Error('compressed');
+    var bits=U('00280100')||16, signed=(U('00280103')===1);
+    var photometric=S('00280004')||'MONOCHROME2';
+    var slope=N('00281053'); if(slope==null) slope=1;
+    var intercept=N('00281052'); if(intercept==null) intercept=0;
+    var n=rows*cols, mo=new Float32Array(n), o=P.pixel.offset;
+    var min=Infinity, max=-Infinity;
+    for(var i=0;i<n;i++){
+        var raw;
+        if(bits<=8) raw=signed?dv.getInt8(o+i):dv.getUint8(o+i);
+        else raw=signed?dv.getInt16(o+i*2,true):dv.getUint16(o+i*2,true);
+        var m=raw*slope+intercept; mo[i]=m;
+        if(m<min)min=m; if(m>max)max=m;
+    }
+    var rtype=(S('00281054')||'').toUpperCase();
+    var defWC=N('00281050'), defWW=N('00281051');
+    if(defWC==null||defWW==null||defWW<=0){defWW=Math.max(1,max-min);defWC=(max+min)/2;}
+    return {rows:rows,cols:cols,mo:mo,photometric:photometric,slope:slope,intercept:intercept,
+        isHU:(rtype==='HU'||S('00080060')==='CT'),bits:U('00280101')||bits,defWC:defWC,defWW:defWW,min:min,max:max,tags:P.tags,ts:P.transferSyntax};
+}
+function renderOffscreen(){
+    var rows=img.rows, cols=img.cols, mo=img.mo;
+    off.width=cols; off.height=rows;
+    var id=octx.createImageData(cols,rows), d=id.data;
+    var c=view.wc, w=Math.max(1,view.ww);
+    var lo=c-0.5-(w-1)/2, hi=c-0.5+(w-1)/2, scale=255/(w-1);
+    var invert=(img.photometric==='MONOCHROME1')!==view.invert;
+    for(var i=0;i<mo.length;i++){
+        var x=mo[i], y;
+        if(x<=lo) y=0; else if(x>hi) y=255; else y=((x-(c-0.5))/(w-1)+0.5)*255;
+        if(invert) y=255-y;
+        var k=i*4; d[k]=d[k+1]=d[k+2]=y; d[k+3]=255;
+    }
+    octx.putImageData(id,0,0);
+}
+function draw(){
+    ctx.setTransform(1,0,0,1,0,0);
+    ctx.clearRect(0,0,cw,ch);
+    if(!img){updateOverlays();return;}
+    ctx.imageSmoothingEnabled=false;
+    ctx.save();
+    ctx.translate(cw/2+view.panX*dpr, ch/2+view.panY*dpr);
+    ctx.scale(view.zoom*dpr, view.zoom*dpr);
+    ctx.drawImage(off, -img.cols/2, -img.rows/2);
+    ctx.restore();
+    updateOverlays();
+}
+function fitView(){
+    if(!img)return;
+    var rect=wrap.getBoundingClientRect();
+    view.zoom=Math.min(rect.width/img.cols, rect.height/img.rows)*0.94;
+    view.panX=0; view.panY=0; draw();
+}
+function updateOverlays(){
+    var tl=document.getElementById('ovTL'), tr=document.getElementById('ovTR'),
+        bl=document.getElementById('ovBL'), br=document.getElementById('ovBR');
+    if(!img){tl.textContent=tr.textContent=bl.textContent=br.textContent='';return;}
+    var S=function(k){return img.tags[k]?readStr(new DataView(bytesRef.buffer,bytesRef.byteOffset,bytesRef.byteLength),img.tags[k]).replace(/[\0]+/g,'').trim():'';};
+    var name=(S('00100010')||'—').replace(/\^/g,' ').trim();
+    tl.textContent=name+'\n'+(S('00100020')||'')+'\n'+(S('00080060')||'')+'  '+(S('0008103E')||'');
+    tr.textContent='WW '+Math.round(view.ww)+'  WC '+Math.round(view.wc)+'\nZoom '+Math.round(view.zoom*100)+'%';
+    br.textContent=img.cols+' x '+img.rows+'\n'+img.bits+'-bit  '+img.photometric;
+    if(!bl.dataset.lock) bl.textContent='';
+}
+var bytesRef=null;
+
+function loadBytes(bytes, sourceName){
+    hideMsg();
+    try{
+        bytesRef=bytes;
+        var P=parseDicom(bytes);
+        var dv=new DataView(bytes.buffer,bytes.byteOffset,bytes.byteLength);
+        img=decodeToMo(P,dv);
+        view.invert=false;
+        view.wc=img.defWC; view.ww=img.defWW;
+        renderOffscreen();
+        fitCanvas(); fitView();
+        drop.style.display='none';
+        buildTagPanel(P,dv);
+        setActivePreset();
+    }catch(err){
+        if(err && err.message==='compressed'){
+            // still show tags for a compressed file
+            try{var P2=parseDicom(bytes);buildTagPanel(P2,new DataView(bytes.buffer,bytes.byteOffset,bytes.byteLength));}catch(e){}
+            showMsg('This study uses a compressed transfer syntax. Aperture renders uncompressed DICOM; showing the metadata only.');
+            img=null; drop.style.display='none'; draw();
+        } else {
+            showMsg('Could not read this file as DICOM'+(sourceName?' ('+sourceName+')':'')+'. '+(err&&err.message?err.message:''));
+            console.error(err);
+        }
+    }
+}
+function showMsg(t){msgEl.textContent=t;msgEl.style.display='block';}
+function hideMsg(){msgEl.style.display='none';}
+
+/* ---------- Tag panel ---------- */
+var TS_NAMES={
+    '1.2.840.10008.1.2':'Implicit VR Little Endian',
+    '1.2.840.10008.1.2.1':'Explicit VR Little Endian',
+    '1.2.840.10008.1.2.2':'Explicit VR Big Endian',
+    '1.2.840.10008.1.2.4.50':'JPEG Baseline',
+    '1.2.840.10008.1.2.4.70':'JPEG Lossless',
+    '1.2.840.10008.1.2.4.90':'JPEG 2000 Lossless',
+    '1.2.840.10008.1.2.4.91':'JPEG 2000',
+    '1.2.840.10008.1.2.5':'RLE Lossless'
+};
+var SOP_NAMES={'1.2.840.10008.5.1.4.1.1.2':'CT Image Storage','1.2.840.10008.5.1.4.1.1.4':'MR Image Storage',
+    '1.2.840.10008.5.1.4.1.1.1':'CR Image Storage','1.2.840.10008.5.1.4.1.1.7':'Secondary Capture'};
+function buildTagPanel(P,dv){
+    var S=function(k){return P.tags[k]?readStr(dv,P.tags[k]).replace(/[\0]+/g,'').trim():null;};
+    var U=function(k){return P.tags[k]?dv.getUint16(P.tags[k].offset,true):null;};
+    function grp(title){return '<div class="tgcat">'+title+'</div>';}
+    function row(name,tag,val){
+        if(val==null||val==='') return '';
+        return '<div class="trow"><div class="tk">'+name+'<small>('+tag.slice(0,4)+','+tag.slice(4)+')</small></div><div class="tv">'+esc(val)+'</div></div>';
+    }
+    var ts=P.transferSyntax||'';
+    var html='';
+    html+=grp('Study / Series');
+    html+=row('Transfer Syntax','00020010',(TS_NAMES[ts]||ts));
+    html+=row('SOP Class','00080016',(SOP_NAMES[S('00080016')]||S('00080016')));
+    html+=row('Modality','00080060',S('00080060'));
+    html+=row('Study Date','00080020',fmtDate(S('00080020')));
+    html+=row('Series Desc.','0008103E',S('0008103E'));
+    html+=row('Manufacturer','00080070',S('00080070'));
+    html+=grp('Patient');
+    html+=row('Patient Name','00100010',(S('00100010')||'').replace(/\^/g,' ').trim());
+    html+=row('Patient ID','00100020',S('00100020'));
+    html+=row('Sex','00100040',S('00100040'));
+    html+=grp('Image / Pixel');
+    html+=row('Rows','00280010',U('00280010'));
+    html+=row('Columns','00280011',U('00280011'));
+    html+=row('Bits Stored','00280101',U('00280101'));
+    html+=row('Pixel Repr.','00280103',U('00280103')===1?'signed':'unsigned');
+    html+=row('Photometric','00280004',S('00280004'));
+    html+=row('Pixel Spacing','00280030',S('00280030'));
+    html+=row('Slice Thick.','00180050',S('00180050'));
+    html+=row('Window Center','00281050',S('00281050'));
+    html+=row('Window Width','00281051',S('00281051'));
+    html+=row('Rescale Slope','00281053',S('00281053'));
+    html+=row('Rescale Interc.','00281052',S('00281052'));
+    document.getElementById('tags').innerHTML=html;
+    document.getElementById('tagCount').textContent=Object.keys(P.tags).length+' elements';
+}
+function esc(s){return String(s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+function fmtDate(d){if(!d||d.length<8)return d;return d.slice(0,4)+'-'+d.slice(4,6)+'-'+d.slice(6,8);}
+
+/* ---------- Interactions ---------- */
+var drag=null;
+wrap.addEventListener('mousedown',function(e){
+    if(!img)return;
+    e.preventDefault();
+    var pan=(e.button===2||e.button===1||e.shiftKey);
+    drag={mode:pan?'pan':'wl',x:e.clientX,y:e.clientY,wc:view.wc,ww:view.ww,panX:view.panX,panY:view.panY};
+});
+window.addEventListener('mousemove',function(e){
+    if(img && drag){
+        var dx=e.clientX-drag.x, dy=e.clientY-drag.y;
+        if(drag.mode==='wl'){
+            view.ww=Math.max(1,drag.ww+dx*2);
+            view.wc=drag.wc-dy*2;
+            renderOffscreen(); draw(); setActivePreset();
+        } else {
+            view.panX=drag.panX+dx; view.panY=drag.panY+dy; draw();
+        }
+    }
+    if(img && !drag) readout(e);
+});
+window.addEventListener('mouseup',function(){drag=null;});
+wrap.addEventListener('contextmenu',function(e){e.preventDefault();});
+wrap.addEventListener('mouseleave',function(){var bl=document.getElementById('ovBL');bl.dataset.lock='';bl.textContent='';});
+wrap.addEventListener('wheel',function(e){
+    if(!img)return; e.preventDefault();
+    var rect=wrap.getBoundingClientRect();
+    var mx=(e.clientX-rect.left)*dpr, my=(e.clientY-rect.top)*dpr;
+    var before=screenToImage(mx,my);
+    var f=e.deltaY<0?1.12:1/1.12;
+    view.zoom=Math.max(0.05,Math.min(40,view.zoom*f));
+    var after=screenToImage(mx,my);
+    view.panX+=(after.x-before.x)*view.zoom*dpr/dpr; // keep cursor point stable
+    view.panY+=(after.y-before.y)*view.zoom*dpr/dpr;
+    draw();
+},{passive:false});
+function screenToImage(mx,my){
+    return {x:(mx-(cw/2+view.panX*dpr))/(view.zoom*dpr)+img.cols/2,
+            y:(my-(ch/2+view.panY*dpr))/(view.zoom*dpr)+img.rows/2};
+}
+function readout(e){
+    var rect=wrap.getBoundingClientRect();
+    var mx=(e.clientX-rect.left)*dpr, my=(e.clientY-rect.top)*dpr;
+    var pt=screenToImage(mx,my), ix=Math.floor(pt.x), iy=Math.floor(pt.y);
+    var bl=document.getElementById('ovBL');
+    if(ix>=0&&iy>=0&&ix<img.cols&&iy<img.rows){
+        var val=img.mo[iy*img.cols+ix];
+        bl.dataset.lock='1';
+        bl.textContent='('+ix+', '+iy+')  '+(img.isHU?(Math.round(val)+' HU'):Math.round(val));
+    } else {bl.dataset.lock='';bl.textContent='';}
+}
+
+/* ---------- Buttons ---------- */
+document.getElementById('btnSample').onclick=function(){loadBytes(buildSampleDicom(),'sample');};
+document.getElementById('btnOpen').onclick=function(){document.getElementById('file').click();};
+document.getElementById('file').onchange=function(e){var f=e.target.files[0];if(f)readFile(f);};
+document.getElementById('btnFit').onclick=fitView;
+document.getElementById('btnActual').onclick=function(){if(!img)return;view.zoom=1;view.panX=0;view.panY=0;draw();};
+document.getElementById('btnInvert').onclick=function(){if(!img)return;view.invert=!view.invert;renderOffscreen();draw();};
+document.getElementById('btnReset').onclick=function(){if(!img)return;view.invert=false;view.wc=img.defWC;view.ww=img.defWW;renderOffscreen();fitView();setActivePreset();};
+[].forEach.call(document.querySelectorAll('.preset'),function(b){
+    b.onclick=function(){if(!img)return;view.wc=parseFloat(b.dataset.wc);view.ww=parseFloat(b.dataset.ww);renderOffscreen();draw();setActivePreset();};
+});
+function setActivePreset(){
+    [].forEach.call(document.querySelectorAll('.preset'),function(b){
+        var on=(Math.round(parseFloat(b.dataset.wc))===Math.round(view.wc)&&Math.round(parseFloat(b.dataset.ww))===Math.round(view.ww));
+        b.classList.toggle('active',on);
+    });
+}
+function readFile(f){
+    var rd=new FileReader();
+    rd.onload=function(){loadBytes(new Uint8Array(rd.result), f.name);};
+    rd.onerror=function(){showMsg('Could not read the file.');};
+    rd.readAsArrayBuffer(f);
+}
+
+/* ---------- Drag & drop ---------- */
+['dragenter','dragover'].forEach(function(ev){wrap.addEventListener(ev,function(e){e.preventDefault();wrap.classList.add('dragover');});});
+['dragleave','drop'].forEach(function(ev){wrap.addEventListener(ev,function(e){e.preventDefault();if(ev==='dragleave'&&e.target!==wrap)return;wrap.classList.remove('dragover');});});
+wrap.addEventListener('drop',function(e){var f=e.dataTransfer.files[0];if(f)readFile(f);});
+
+window.addEventListener('resize',function(){dpr=Math.max(1,window.devicePixelRatio||1);fitCanvas();});
+
+/* ---------- Boot ---------- */
+fitCanvas();
+loadBytes(buildSampleDicom(),'sample');
+</script>
+</body>
+</html>

@@ -57,13 +57,13 @@
                     </div>
                     <div class="current-row">
                         <div class="current-label">Latest</div>
-                        <div class="current-value">Phanera, Hospital Price Transparency</div>
-                        <div class="current-meta"><a href="https://phanera.enochenagbem.cloud" target="_blank">phanera.enochenagbem.cloud &rarr;</a></div>
+                        <div class="current-value">Aperture, Browser DICOM Viewer</div>
+                        <div class="current-meta"><a href="dicom.html">enochenagbem.cloud/dicom &rarr;</a></div>
                     </div>
                     <div class="current-row">
                         <div class="current-label">Also live</div>
-                        <div class="current-value">HealthHub &middot; Caelis Health</div>
-                        <div class="current-meta"><a href="https://health.enochenagbem.cloud" target="_blank">health</a> &middot; <a href="https://caelis.enochenagbem.cloud" target="_blank">caelis &rarr;</a></div>
+                        <div class="current-value">Phanera &middot; HealthHub &middot; Caelis</div>
+                        <div class="current-meta"><a href="https://phanera.enochenagbem.cloud" target="_blank">phanera</a> &middot; <a href="https://health.enochenagbem.cloud" target="_blank">health</a> &middot; <a href="https://caelis.enochenagbem.cloud" target="_blank">caelis &rarr;</a></div>
                     </div>
                     <div class="current-row last">
                         <div class="current-label">Based in</div>
@@ -99,7 +99,7 @@
     <section class="projects" id="work">
         <div class="container">
             <span class="overline">Healthcare IT</span>
-            <h2 class="sec-heading">Three healthcare apps, shipped live<br>from price transparency to Epic FHIR<span class="heading-dot">.</span></h2>
+            <h2 class="sec-heading">Four healthcare apps, shipped live<br>from price transparency to medical imaging<span class="heading-dot">.</span></h2>
 
             <!-- Project H1 — Phanera -->
             <article class="project">
@@ -292,6 +292,71 @@
                     <a href="https://health.enochenagbem.cloud" target="_blank" class="proj-link live">
                         <span class="live-dot"></span>
                         Live demo
+                    </a>
+                </div>
+            </article>
+
+            <!-- Project H4 — Aperture -->
+            <article class="project">
+                <div class="project-header">
+                    <div class="project-num">04</div>
+                    <div class="project-meta">
+                        <h3>Aperture</h3>
+                        <p class="project-type">Browser-Based DICOM Viewer</p>
+                    </div>
+                    <div class="project-badges">
+                        <span class="badge badge-blue">DICOM</span>
+                        <span class="badge badge-purple">Canvas</span>
+                        <span class="badge badge-green">Client-Side</span>
+                        <span class="badge badge-teal">Window / Level</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>Radiology runs on DICOM, the file every CT, MRI, and X-ray produces. Aperture opens a real <code>.dcm</code> study entirely in the browser: it parses the DICOM header, rescales the stored pixels to Hounsfield units, and renders the 16-bit image to a canvas with interactive window/level, zoom, pan, and CT presets, the same controls a radiologist uses at a PACS workstation. A synthetic head-phantom study is generated in-page, so it works with one click and no upload.</p>
+                    <div class="arch-box">
+                        <div class="arch-label">Render Pipeline</div>
+                        <div class="arch-diagram">
+                            <div class="arch-row">
+                                <div class="arch-step"><span>.dcm file</span><small>drag-drop or in-page</small></div>
+                                <div class="arch-connector-sm">&rarr;</div>
+                                <div class="arch-step"><span>DICOM parser</span><small>VR + transfer syntax</small></div>
+                                <div class="arch-connector-sm">&rarr;</div>
+                                <div class="arch-step"><span>Modality LUT</span><small>raw&middot;slope + intercept</small></div>
+                                <div class="arch-connector-sm">&rarr;</div>
+                                <div class="arch-step"><span>Window / Level</span><small>VOI &rarr; Canvas</small></div>
+                            </div>
+                            <div class="arch-note">Vanilla JavaScript &middot; custom DICOM Part 10 parser (Explicit &amp; Implicit VR Little Endian, sequence skipping) &middot; modality LUT + VOI LINEAR windowing &middot; HTML5 Canvas &middot; zero dependencies, fully client-side so no image ever leaves the browser.</div>
+                        </div>
+                    </div>
+                    <div class="decisions">
+                        <div class="decisions-label">Why these choices</div>
+                        <div class="decision">
+                            <strong>Fully client-side, nothing uploaded</strong>
+                            <p>Medical images are protected health information. Parsing, windowing, and rendering every pixel locally means there is no server to store or leak data, the safe default for anything imaging-related.</p>
+                        </div>
+                        <div class="decision">
+                            <strong>A hand-written DICOM parser, not a black-box library</strong>
+                            <p>Reading the header directly (group/element tags, value representations, the transfer-syntax switch, sequence skipping) is the clearest way to show I understand the DICOM data model that PACS, VNAs, and Epic Radiant are built on.</p>
+                        </div>
+                        <div class="decision">
+                            <strong>Window/level applied on the modality LUT</strong>
+                            <p>Stored pixels are first rescaled to Hounsfield units (slope and intercept), then windowed with the DICOM VOI LINEAR formula. That is the exact order a diagnostic viewer uses, which is why the Brain, Bone, and Lung presets land on the right tissues.</p>
+                        </div>
+                    </div>
+                    <div class="learnings">
+                        <div class="learning">DICOM data model: tags, VRs, transfer syntaxes, photometric interpretation, rescale slope/intercept, VOI window center/width</div>
+                        <div class="learning">Why imaging is stored as 12/16-bit and displayed through a window, not as an ordinary 8-bit image</div>
+                        <div class="learning">The imaging IT chain end to end: modality &rarr; DICOM &rarr; PACS/VNA &rarr; viewer, and where an analyst sits in it</div>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/enagbeme/cloud-portfolio/blob/main/dicom.html" target="_blank" class="proj-link">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        View source
+                    </a>
+                    <a href="dicom.html" class="proj-link live">
+                        <span class="live-dot"></span>
+                        Launch viewer
                     </a>
                 </div>
             </article>
